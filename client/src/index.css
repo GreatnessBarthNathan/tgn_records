@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  background: whitesmoke;
+}
+
+.small-sidebar {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.7)
+  );
+}
+
+.active {
+  color: rgb(149, 3, 253);
+  background: whitesmoke;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(59, 59, 207);
+  border-radius: 6px;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  width: 70px;
+  height: 70px;
+  margin: auto;
+  border: 5px solid blue;
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spinner 0.5s linear infinite;
+}
