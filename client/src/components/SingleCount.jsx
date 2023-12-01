@@ -20,6 +20,11 @@ const SingleCount = ({
   enteredAt,
 }) => {
   const { user } = useDashboardContext()
+
+  const date = new Date(enteredAt).toLocaleDateString()
+  const day = new Date(date).getDay()
+  console.log(day)
+
   return (
     // item container
     <div className='bg-white rounded p-4 shadow-md'>
@@ -29,6 +34,7 @@ const SingleCount = ({
         <p className='flex items-center space-x-2 text-indigo-500'>
           <span>{<FaCalendarAlt />}</span>
           {/* <span>{dayjs(enteredAt).format("DD/MM/YYYY")}</span> */}
+          <span>{date}</span>
         </p>
       </div>
       {/* content center */}

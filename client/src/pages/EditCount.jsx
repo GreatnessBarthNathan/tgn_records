@@ -37,6 +37,7 @@ const EditCount = () => {
   const count = useLoaderData()
   const { user } = useDashboardContext()
   const navigation = useNavigation()
+  const isSubmitting = navigation.state === "submitting"
 
   return (
     <div className='w-full p-5 lg:p-10'>

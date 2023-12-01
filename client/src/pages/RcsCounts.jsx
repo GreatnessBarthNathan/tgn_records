@@ -33,8 +33,9 @@ const RcsCounts = () => {
   const [rcCounts, setRcCounts] = useState(counts)
 
   // date
-  const today = new Date()
-  // const [date, setDate] = useState(dayjs(today).format("dddd, MMMM DD, YYYY"))
+  // let today = new Date()
+  // today = dayjs(today).format("dddd, MMMM DD, YYYY").toString()
+  // const [date, setDate] = useState(dayjs(today).format(today))
 
   // get user ids
   const getUserId = () => {
@@ -93,7 +94,9 @@ const RcsCounts = () => {
         data: { counts },
       } = await customFetch.get(url)
       setRcCounts(counts)
-      // setDate(dayjs(enteredAt).format("dddd, MMMM DD, YYYY"))
+      // let newDate = dayjs(enteredAt).format("dddd, MMMM DD, YYYY")
+      // newDate = newDate.toString()
+      // setDate(newDate)
       getUserId()
       getTotals()
     } catch (error) {
