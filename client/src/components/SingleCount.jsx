@@ -1,5 +1,3 @@
-import * as dayjs from "dayjs"
-
 import { FaCalendarAlt, FaMale, FaFemale } from "react-icons/fa"
 import { MdAllOut } from "react-icons/md"
 import { SiConvertio } from "react-icons/si"
@@ -7,6 +5,7 @@ import { GiBowman } from "react-icons/gi"
 import { PiBaby } from "react-icons/pi"
 import { Link } from "react-router-dom"
 import { useDashboardContext } from "../pages/DashboardLayout"
+import { months, days } from "../utils/constants"
 
 const SingleCount = ({
   _id,
@@ -20,10 +19,12 @@ const SingleCount = ({
   enteredAt,
 }) => {
   const { user } = useDashboardContext()
-
-  const date = new Date(enteredAt).toLocaleDateString()
-  const day = new Date(date).getDay()
-  console.log(day)
+  const countDate = new Date(enteredAt)
+  const date = countDate.getDate()
+  const day = countDate.getDay()
+  const month = countDate.getMonth()
+  const year = countDate.getFullYear()
+  console.log(days[day], months[month], date, year)
 
   return (
     // item container
@@ -33,8 +34,9 @@ const SingleCount = ({
         <h2 className='font-bold text-2xl text-indigo-500'>{meetingType}</h2>
         <p className='flex items-center space-x-2 text-indigo-500'>
           <span>{<FaCalendarAlt />}</span>
-          {/* <span>{dayjs(enteredAt).format("DD/MM/YYYY")}</span> */}
-          <span>{date}</span>
+          <span className='text-sm'>
+            {days[day]}, {months[month]} {date}, {year}
+          </span>
         </p>
       </div>
       {/* content center */}

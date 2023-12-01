@@ -14,3 +14,20 @@ export const meetingType = {
   CONSECRATION: "CONSECRATION",
   TGP: "TGP",
 }
+
+export const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec",
+]
+
+export const days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]

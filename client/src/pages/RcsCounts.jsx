@@ -3,7 +3,7 @@ import customFetch from "../utils/customFetch"
 import { useLoaderData } from "react-router-dom"
 import { RcCountsTag, RcCountsDetails } from "../components"
 import { toast } from "react-toastify"
-import * as dayjs from "dayjs"
+import { months, days } from "../utils/constants"
 
 const RcsCountsContext = createContext()
 
@@ -32,10 +32,12 @@ const RcsCounts = () => {
   const [totals, setTotals] = useState({})
   const [rcCounts, setRcCounts] = useState(counts)
 
-  // date
-  // let today = new Date()
-  // today = dayjs(today).format("dddd, MMMM DD, YYYY").toString()
-  // const [date, setDate] = useState(dayjs(today).format(today))
+  const countDate = new Date(Date.now())
+  const date = countDate.getDate()
+  const day = countDate.getDay()
+  const month = countDate.getMonth()
+  const year = countDate.getFullYear()
+  const [dateObj, setDateObj] = useState({ date, day, month, year })
 
   // get user ids
   const getUserId = () => {
@@ -94,9 +96,12 @@ const RcsCounts = () => {
         data: { counts },
       } = await customFetch.get(url)
       setRcCounts(counts)
-      // let newDate = dayjs(enteredAt).format("dddd, MMMM DD, YYYY")
-      // newDate = newDate.toString()
-      // setDate(newDate)
+      const countDate = new Date(enteredAt)
+      const date = countDate.getDate()
+      const day = countDate.getDay()
+      const month = countDate.getMonth()
+      const year = countDate.getFullYear()
+      setDateObj({ date, day, month, year })
       getUserId()
       getTotals()
     } catch (error) {
@@ -138,7 +143,8 @@ const RcsCounts = () => {
         </form>
 
         <h1 className='text-right font-semibold text-sm lg:text-2xl text-slate-700 mb-2 pr-3'>
-          {/* {date} */}
+          {days[dateObj.day]}, {months[dateObj.month]} {dateObj.date},{" "}
+          {dateObj.year}
         </h1>
         <div className='flex justify-center space-x-2'>
           <RcCountsTag styling='w-[15%] py-5 px-2 lg:block hidden' />

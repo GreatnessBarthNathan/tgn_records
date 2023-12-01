@@ -8,6 +8,7 @@ import { Link } from "react-router-dom"
 import { useLoaderData, useNavigate } from "react-router-dom"
 import customFetch from "../utils/customFetch"
 import { toast } from "react-toastify"
+import { months, days } from "../utils/constants"
 
 export const loader = async ({ params }) => {
   try {
@@ -35,6 +36,11 @@ const DeleteCount = () => {
   } = useLoaderData()
 
   const navigate = useNavigate()
+  const countDate = new Date(enteredAt)
+  const date = countDate.getDate()
+  const day = countDate.getDay()
+  const month = countDate.getMonth()
+  const year = countDate.getFullYear()
 
   const deleteItem = async () => {
     try {
@@ -55,7 +61,9 @@ const DeleteCount = () => {
           <h2 className='font-bold text-2xl text-indigo-500'>{meetingType}</h2>
           <p className='flex items-center space-x-2 text-indigo-500'>
             <span>{<FaCalendarAlt />}</span>
-            {/* <span>{dayjs(enteredAt).format("DD/MM/YYYY")}</span> */}
+            <span className='text-sm'>
+              {days[day]}, {months[month]} {date}, {year}
+            </span>
           </p>
         </div>
         {/* content center */}
