@@ -21,11 +21,11 @@ const Error = () => {
       </div>
     )
   }
-  return (
-    <div className='w-full'>
-      <h1 className='text-center mt-[50px] text-2xl'>Something went wrong</h1>
-    </div>
-  )
+  // return (
+  //   <div className='w-full'>
+  //     <h1 className='text-center mt-[50px] text-2xl'>Something went wrong</h1>
+  //   </div>
+  // )
 }
 
 export default Error

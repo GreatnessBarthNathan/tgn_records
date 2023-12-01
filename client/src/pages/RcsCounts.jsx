@@ -34,7 +34,7 @@ const RcsCounts = () => {
 
   // date
   const today = new Date()
-  const [date, setDate] = useState(dayjs(today).format("dddd, MMMM DD, YYYY"))
+  // const [date, setDate] = useState(dayjs(today).format("dddd, MMMM DD, YYYY"))
 
   // get user ids
   const getUserId = () => {
@@ -93,7 +93,7 @@ const RcsCounts = () => {
         data: { counts },
       } = await customFetch.get(url)
       setRcCounts(counts)
-      setDate(dayjs(enteredAt).format("dddd, MMMM DD, YYYY"))
+      // setDate(dayjs(enteredAt).format("dddd, MMMM DD, YYYY"))
       getUserId()
       getTotals()
     } catch (error) {
@@ -135,7 +135,7 @@ const RcsCounts = () => {
         </form>
 
         <h1 className='text-right font-semibold text-sm lg:text-2xl text-slate-700 mb-2 pr-3'>
-          {date}
+          {/* {date} */}
         </h1>
         <div className='flex justify-center space-x-2'>
           <RcCountsTag styling='w-[15%] py-5 px-2 lg:block hidden' />

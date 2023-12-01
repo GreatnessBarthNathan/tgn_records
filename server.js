@@ -9,7 +9,7 @@ import helmet from "helmet"
 import mongoSanitize from "express-mongo-sanitize"
 
 // middlewares
-import notFound from "./middleware/notFound.js"
+// import notFound from "./middleware/notFound.js"
 import errorHandler from "./middleware/errorHandler.js"
 import { authenticateUser } from "./middleware/authMiddleware.js"
 
