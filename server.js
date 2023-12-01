@@ -26,7 +26,7 @@ import path from "path"
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"))
 }
 
