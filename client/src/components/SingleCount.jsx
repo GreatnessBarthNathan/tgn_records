@@ -24,14 +24,15 @@ const SingleCount = ({
   const day = countDate.getDay()
   const month = countDate.getMonth()
   const year = countDate.getFullYear()
-  console.log(days[day], months[month], date, year)
 
   return (
     // item container
     <div className='bg-white rounded p-4 shadow-md'>
       {/* title and date */}
       <div className='flex justify-between items-baseline border-b pb-2 border-slate-500 '>
-        <h2 className='font-bold text-2xl text-indigo-500'>{meetingType}</h2>
+        <h2 className='font-bold text-base lg:text-2xl text-indigo-500'>
+          {meetingType}
+        </h2>
         <p className='flex items-center space-x-2 text-indigo-500'>
           <span>{<FaCalendarAlt />}</span>
           <span className='text-sm'>
