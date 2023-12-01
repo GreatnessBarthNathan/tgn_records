@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"))
 }
 
-app.use(express.static(path.resolve(__dirname, "./client/dist")))
+app.use(express.static(path.resolve(__dirname, "./client/dist/index.html")))
 
 app.use(cookieParser())
 app.use(express.json())
