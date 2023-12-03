@@ -27,21 +27,25 @@ const SmallSidebar = () => {
             container='w-[30%] m-auto mb-[25px] bg-[whitesmoke] rounded-full shadow-md'
             image='w-full'
           />
-          <PageLink
-            url='/dashboard/add-count'
-            text='Add Count'
-            icon={<MdGroups />}
-          />
+          {user.role === "user" && (
+            <PageLink
+              url='/dashboard/add-count'
+              text='Add Count'
+              icon={<MdGroups />}
+            />
+          )}
           {/* <PageLink
             url='/dashboard/add-finance'
             text='Add Finances'
             icon={<FaMoneyBill />}
           /> */}
-          <PageLink
-            url={`/dashboard/all-counts/${user._id}`}
-            text='All Counts'
-            icon={<LuTally5 />}
-          />
+          {user.role === "user" && (
+            <PageLink
+              url={`/dashboard/all-counts/${user._id}`}
+              text='All Counts'
+              icon={<LuTally5 />}
+            />
+          )}
           {/* <PageLink
             url='/dashboard/all-finances'
             text='All Finances'

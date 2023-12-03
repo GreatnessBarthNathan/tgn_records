@@ -1,4 +1,3 @@
-import * as dayjs from "dayjs"
 import { FaCalendarAlt, FaMale, FaFemale } from "react-icons/fa"
 import { MdAllOut } from "react-icons/md"
 import { SiConvertio } from "react-icons/si"

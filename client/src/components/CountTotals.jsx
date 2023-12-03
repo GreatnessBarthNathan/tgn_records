@@ -23,10 +23,12 @@ const CountTotals = () => {
 const TotalContents = ({ text, value }) => {
   return (
     <p className='border-t lg:border-t-2 border-indigo-500 grid grid-cols-2 capitalize'>
-      <span className='border-r border-indigo-500 p-1 text-xs md:text-base'>
+      <span className='border-r border-indigo-500 p-1 text-[10px] md:text-base'>
         {text}
       </span>
-      <span className='text-center text-xs md:text-base'>{value || 0}</span>
+      <span className='text-center text-[10px] p-1 md:text-base'>
+        {value || 0}
+      </span>
     </p>
   )
 }

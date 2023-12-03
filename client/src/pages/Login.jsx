@@ -10,7 +10,13 @@ export const action = async ({ request }) => {
   const data = Object.fromEntries(formData)
   try {
     await customFetch.post("/auth/login", data)
+    const {
+      data: { user },
+    } = await customFetch.get("/user/current-user")
     toast.success("welcome")
+    if (user.role === "admin") {
+      return redirect("/dashboard/rcs-counts")
+    }
     return redirect("/dashboard/add-count")
   } catch (error) {
     toast.error(error?.response?.data?.msg)

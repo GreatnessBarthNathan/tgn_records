@@ -14,6 +14,9 @@ export const action = async ({ request }) => {
     } = await customFetch.get("/user/current-user")
     await customFetch.patch(`/user/${user._id}`, data)
     toast.success("profile updated")
+    if (user.role === "admin") {
+      return redirect("/dashboard/rcs-counts")
+    }
     return redirect("/dashboard/add-count")
   } catch (error) {
     toast.error(error?.response?.data?.msg)

@@ -32,11 +32,11 @@ const SingleCountTag = ({ _id, royalChapter }) => {
       </Link>
       <Link
         to={`/dashboard/all-counts/${_id}`}
-        className='text-xs hover:text-indigo-500 hover:font-semibold md:hidden'
+        className='text-[10px] hover:text-indigo-500 hover:font-semibold md:hidden'
       >
         {royalChapter.length < 7
           ? royalChapter
-          : royalChapter.substring(0, 7) + "..."}
+          : royalChapter.substring(0, 7) + "."}
       </Link>
     </div>
   )

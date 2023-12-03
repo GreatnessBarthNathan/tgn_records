@@ -9,6 +9,7 @@ export const getEveryCount = async (req, res) => {
 
   const queryObject = {
     enteredAt: dayjs(new Date(Date.now())).format("YYYY-MM-DD"),
+    // role: "user",
   }
 
   if (req.user.role !== "admin") {

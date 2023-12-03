@@ -30,21 +30,25 @@ const BigSidebar = () => {
         />
         {/* links */}
         <div>
-          <PageLink
-            url='/dashboard/add-count'
-            text='Add Count'
-            icon={<MdGroups />}
-          />
+          {user.role === "user" && (
+            <PageLink
+              url='/dashboard/add-count'
+              text='Add Count'
+              icon={<MdGroups />}
+            />
+          )}
           {/* <PageLink
             url='/dashboard/add-finance'
             text='Add Finances'
             icon={<FaMoneyBill />}
           /> */}
-          <PageLink
-            url={`/dashboard/all-counts/${user._id}`}
-            text='All Counts'
-            icon={<LuTally5 />}
-          />
+          {user.role === "user" && (
+            <PageLink
+              url={`/dashboard/all-counts/${user._id}`}
+              text='All Counts'
+              icon={<LuTally5 />}
+            />
+          )}
           {/* <PageLink
             url='/dashboard/all-finances'
             text='All Finances'
