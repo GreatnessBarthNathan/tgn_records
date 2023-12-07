@@ -4,7 +4,7 @@ import landingImg from "../assets/images/landing_img.svg"
 
 const Landing = () => {
   return (
-    <div className='w-[85%] h-[100dvh] m-auto flex py-5'>
+    <div className='w-[85%] h-[100dvh] m-auto flex py-5 overflow-auto'>
       {/* left part */}
       <div className='w-full lg:w-[50%]'>
         <Logo container='w-[100px] md:w-[150px] bg-white rounded-full shadow-md' />

@@ -11,7 +11,7 @@ const RcCountsDetails = () => {
     <div className='w-full lg:w-[85%] m-auto'>
       <table className='border lg:border-2 border-indigo-500 w-full bg-white'>
         {/* table head */}
-        <thead className='bg-indigo-300'>
+        <thead className='bg-indigo-300 sticky top-0'>
           <TableHead text='RC' btext='royal chapter' />
           <TableHead text='MT' btext='meeting type' />
           <TableHead text='M' btext='males' />
