@@ -1,6 +1,6 @@
 import React from "react"
-import { useRcsCountsContext } from "../pages/RcsCounts"
-import { TableHead, TableData, TableRow } from "./TableContents"
+import { useRcsCountsContext } from "../../pages/count/RcsCounts"
+import { TableHead, TableData, TableRow } from "../TableContents"
 import CountTotals from "./CountTotals"
 import RcCountsTag from "./RcCountsTag"
 

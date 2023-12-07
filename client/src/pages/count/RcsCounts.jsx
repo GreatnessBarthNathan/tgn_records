@@ -1,9 +1,9 @@
 import { useContext, createContext, useState, useEffect } from "react"
-import customFetch from "../utils/customFetch"
+import customFetch from "../../utils/customFetch"
 import { useLoaderData } from "react-router-dom"
-import { RcCountsTag, RcCountsDetails } from "../components"
+import { RcCountsTag, RcCountsDetails } from "../../components"
 import { toast } from "react-toastify"
-import { months, days } from "../utils/constants"
+import { months, days } from "../../utils/constants"
 
 const RcsCountsContext = createContext()
 
@@ -122,7 +122,7 @@ const RcsCounts = () => {
   const values = { users, rcCounts, ids, totals }
   return (
     <RcsCountsContext.Provider value={values}>
-      <div className=' p-1 lg:p-10 w-full h-full overflow-auto '>
+      <div className='p-1 lg:p-10 w-full h-full overflow-hidden'>
         {/* Search form */}
         <form
           onSubmit={handleSubmit}

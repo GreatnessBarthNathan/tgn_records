@@ -1,4 +1,4 @@
-import { useAllCountsContext } from "../pages/AllCounts"
+import { useAllCountsContext } from "../../pages/count/AllCounts"
 import SingleCount from "./SingleCount"
 
 const CountsContainer = () => {

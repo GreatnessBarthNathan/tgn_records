@@ -32,16 +32,30 @@ const Register = () => {
             type='text'
             labelText='first name'
             name='firstName'
+            extraStyle='capitalize'
             required
           />
-          <FormRow type='text' labelText='last name' name='lastName' required />
+          <FormRow
+            type='text'
+            labelText='last name'
+            name='lastName'
+            extraStyle='capitalize'
+            required
+          />
           <FormRow
             type='text'
             labelText='royal chapter'
             name='royalChapter'
+            extraStyle='capitalize'
             required
           />
-          <FormRow type='text' labelText='location' name='location' required />
+          <FormRow
+            type='text'
+            labelText='location'
+            name='location'
+            extraStyle='capitalize'
+            required
+          />
           <FormRow type='email' labelText='email' name='email' required />
           <FormRow
             type='password'

@@ -17,6 +17,7 @@ import { authenticateUser } from "./middleware/authMiddleware.js"
 import authRouter from "./routes/authRoutes.js"
 import userRouter from "./routes/userRoutes.js"
 import countRouter from "./routes/countRoutes.js"
+import rcFinanceRouter from "./routes/rcFinanceRoutes.js"
 
 const app = express()
 
@@ -37,6 +38,7 @@ app.use(express.json())
 app.use(helmet())
 app.use(mongoSanitize())
 
+app.use("/api/v1/rc-finance", authenticateUser, rcFinanceRouter)
 app.use("/api/v1/user", authenticateUser, userRouter)
 app.use("/api/v1/count", authenticateUser, countRouter)
 app.use("/api/v1/auth", authRouter)

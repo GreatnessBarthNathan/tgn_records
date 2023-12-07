@@ -12,7 +12,7 @@ export const TableHead = ({ text, btext }) => {
 
 export const TableData = ({ text, user }) => {
   return (
-    <td className='p-1 lg:p-2 border-b border-r lg:border-b-2 lg:border-r-2 border-indigo-500 text-center capitalize hover:text-indigo-500 text-xs lg:text-base'>
+    <td className='p-1 lg:p-2 border-b border-r lg:border-b-2 lg:border-r-2 border-indigo-500 text-center capitalize hover:text-indigo-500 text-[10px] lg:text-base'>
       <Link to={`/dashboard/all-counts/${user}`}>{text}</Link>
     </td>
   )
@@ -34,12 +34,18 @@ export const TableRow = ({
     <tr className='hover:bg-indigo-100'>
       <TableData text={royalChapter} user={user} />
       <TableData text={meetingType} user={user} />
-      <TableData text={males} user={user} />
-      <TableData text={females} user={user} />
-      <TableData text={workForce} user={user} />
-      <TableData text={converts} user={user} />
-      <TableData text={firstTimers} user={user} />
-      <TableData text={totalCount} user={user} />
+      <TableData text={new Intl.NumberFormat().format(males)} user={user} />
+      <TableData text={new Intl.NumberFormat().format(females)} user={user} />
+      <TableData text={new Intl.NumberFormat().format(workForce)} user={user} />
+      <TableData text={new Intl.NumberFormat().format(converts)} user={user} />
+      <TableData
+        text={new Intl.NumberFormat().format(firstTimers)}
+        user={user}
+      />
+      <TableData
+        text={new Intl.NumberFormat().format(totalCount)}
+        user={user}
+      />
     </tr>
   )
 }

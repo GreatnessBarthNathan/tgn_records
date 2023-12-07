@@ -1,9 +1,9 @@
-import { FormRow, FormSelect } from "../components"
+import { FormRow, FormSelect } from "../../components"
 import { Form, redirect, useLoaderData, useNavigation } from "react-router-dom"
-import { MEETING_TYPE } from "../utils/constants"
-import customFetch from "../utils/customFetch"
+import { MEETING_TYPE } from "../../utils/constants"
+import customFetch from "../../utils/customFetch"
 import { toast } from "react-toastify"
-import { useDashboardContext } from "./DashboardLayout"
+import { useDashboardContext } from "../DashboardLayout"
 
 export const loader = async ({ params }) => {
   try {

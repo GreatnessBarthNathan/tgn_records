@@ -4,8 +4,8 @@ import { SiConvertio } from "react-icons/si"
 import { GiBowman } from "react-icons/gi"
 import { PiBaby } from "react-icons/pi"
 import { Link } from "react-router-dom"
-import { useDashboardContext } from "../pages/DashboardLayout"
-import { months, days } from "../utils/constants"
+import { useDashboardContext } from "../../pages/DashboardLayout"
+import { months, days } from "../../utils/constants"
 
 const SingleCount = ({
   _id,
@@ -27,7 +27,7 @@ const SingleCount = ({
 
   return (
     // item container
-    <div className='bg-white rounded p-4 shadow-md'>
+    <div className='bg-white rounded p-2 shadow-md'>
       {/* title and date */}
       <div className='flex justify-between items-baseline border-b pb-2 border-slate-500 '>
         <h2 className='font-bold text-base lg:text-2xl text-indigo-500'>
@@ -42,30 +42,34 @@ const SingleCount = ({
       </div>
       {/* content center */}
       <div className='grid grid-cols-2 py-3 text-slate-500'>
-        <p className='flex items-center space-x-2 mx-y'>
+        <p className='flex items-center space-x-2 mx-y text-xs md:text-base capitalize'>
           <span>{<MdAllOut />}</span>
-          <span>total count - {totalCount}</span>
+          <span>
+            total count - {new Intl.NumberFormat().format(totalCount)}
+          </span>
         </p>
-        <p className='flex items-center space-x-2 my-1'>
+        <p className='flex items-center space-x-2 my-1 text-xs md:text-sm capitalize'>
           <span>{<GiBowman />}</span>
-          <span>work force - {workForce}</span>
+          <span>work force - {new Intl.NumberFormat().format(workForce)}</span>
         </p>
-        <p className='flex items-center space-x-2 my-1'>
+        <p className='flex items-center space-x-2 my-1 text-xs md:text-base capitalize'>
           <span>{<FaMale />}</span>
-          <span> males - {males}</span>
+          <span> males - {new Intl.NumberFormat().format(males)}</span>
         </p>
-        <p className='flex items-center space-x-2 my-1'>
+        <p className='flex items-center space-x-2 my-1 text-xs md:text-base capitalize'>
           <span>{<PiBaby />}</span>
-          <span>first timers - {firstTimers}</span>
+          <span>
+            first timers - {new Intl.NumberFormat().format(firstTimers)}
+          </span>
         </p>
-        <p className='flex items-center space-x-2 my-1'>
+        <p className='flex items-center space-x-2 my-1 text-xs md:text-base capitalize'>
           <span>{<FaFemale />}</span>
-          <span> females - {females}</span>
+          <span> females - {new Intl.NumberFormat().format(females)}</span>
         </p>
 
-        <p className='flex items-center space-x-2 my-1'>
+        <p className='flex items-center space-x-2 my-1 text-xs md:text-base capitalize'>
           <span>{<SiConvertio />}</span>
-          <span>converts - {converts}</span>
+          <span>r.converts - {new Intl.NumberFormat().format(converts)}</span>
         </p>
       </div>
       <div className='flex items-center space-x-5 text-slate-700 capitalize'>

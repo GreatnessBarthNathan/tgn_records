@@ -11,12 +11,11 @@ import {
 } from "../controller/countController.js"
 
 import {
-  validateCreateCountInput,
+  validateCountInput,
   validateCountIdParam,
-  validateUpdateCountInput,
 } from "../middleware/validationMiddleware.js"
 
-router.post("/", validateCreateCountInput, createCount)
+router.post("/", validateCountInput, createCount)
 
 router.get("/all-counts/:id", getAllCounts)
 
@@ -24,12 +23,7 @@ router.get("/every-count", getEveryCount)
 
 router.get("/:id", validateCountIdParam, getSingleCount)
 
-router.patch(
-  "/:id",
-  validateUpdateCountInput,
-  validateCountIdParam,
-  updateCount
-)
+router.patch("/:id", validateCountInput, validateCountIdParam, updateCount)
 
 router.delete("/:id", validateCountIdParam, deleteCount)
 

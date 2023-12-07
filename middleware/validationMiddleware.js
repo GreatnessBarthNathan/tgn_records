@@ -64,7 +64,7 @@ export const validateUpdateUserInput = withValidationErrors([
 ])
 
 // create count validation
-export const validateCreateCountInput = withValidationErrors([
+export const validateCountInput = withValidationErrors([
   body("meetingType").notEmpty().withMessage("meeting type is required"),
   body("totalCount").notEmpty().withMessage("total count is required"),
   body("firstTimers").notEmpty().withMessage("first timers is required"),
@@ -84,12 +84,17 @@ export const validateCountIdParam = withValidationErrors([
   }),
 ])
 
-export const validateUpdateCountInput = withValidationErrors([
+// RC Finance Validation
+export const validateRcFinanceInput = withValidationErrors([
   body("meetingType").notEmpty().withMessage("meeting type is required"),
-  body("totalCount").notEmpty().withMessage("total count is required"),
-  body("firstTimers").notEmpty().withMessage("first timers is required"),
-  body("workForce").notEmpty().withMessage("work force is required"),
-  body("converts").notEmpty().withMessage("converts is required"),
-  body("males").notEmpty().withMessage("males is required"),
-  body("females").notEmpty().withMessage("females is required"),
+  body("totalOffering").notEmpty().withMessage("total offeting is required"),
+  body("firstFruit").notEmpty().withMessage("first fruit record is required"),
+  body("tithes").notEmpty().withMessage("tithes is required"),
+  body("seeds").notEmpty().withMessage("seeds record is required"),
+  body("specialSeeds")
+    .notEmpty()
+    .withMessage("special seeds record is required"),
+  body("SGD").notEmpty().withMessage("SGD is required"),
+  body("TGP").notEmpty().withMessage("TGP is required"),
+  body("thanksgiving").notEmpty().withMessage("thanksgiving is required"),
 ])

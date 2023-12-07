@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useRcsCountsContext } from "../pages/RcsCounts"
+import { useRcsCountsContext } from "../../pages/count/RcsCounts"
 import SingleCountTag from "./SingleCountTag"
 
 const RcCountsTag = ({ styling }) => {

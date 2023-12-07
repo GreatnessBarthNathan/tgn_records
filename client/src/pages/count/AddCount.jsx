@@ -1,7 +1,7 @@
-import { FormRow, FormSelect } from "../components"
+import { FormRow, FormSelect } from "../../components"
 import { Form, redirect, useNavigation } from "react-router-dom"
-import { MEETING_TYPE } from "../utils/constants"
-import customFetch from "../utils/customFetch"
+import { MEETING_TYPE } from "../../utils/constants"
+import customFetch from "../../utils/customFetch"
 import { toast } from "react-toastify"
 
 export const action = async ({ request }) => {
@@ -62,7 +62,7 @@ const AddCount = () => {
           <FormRow
             type='number'
             name='converts'
-            labelText='converts'
+            labelText='retained converts'
             required
           />
           <FormRow type='number' name='males' labelText='males' required />

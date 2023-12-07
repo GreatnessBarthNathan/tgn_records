@@ -22,17 +22,17 @@ import {
 // actions
 import { action as registerAction } from "./pages/Register"
 import { action as loginAction } from "./pages/Login"
-import { action as addCountAction } from "./pages/AddCount"
-import { action as editCountAction } from "./pages/EditCount"
+import { action as addCountAction } from "./pages/count/AddCount"
+import { action as editCountAction } from "./pages/count/EditCount"
 import { action as forgotPasswordAction } from "./pages/ForgotPassword"
 import { action as profileAction } from "./pages/Profile"
 
 // loaders
 import { loader as dashboardLoader } from "./pages/DashboardLayout"
-import { loader as allCountsLoader } from "./pages/AllCounts"
-import { loader as rcsCountsLoader } from "./pages/RcsCounts"
-import { loader as editCountLoader } from "./pages/EditCount"
-import { loader as deleteCountLoader } from "./pages/DeleteCount"
+import { loader as allCountsLoader } from "./pages/count/AllCounts"
+import { loader as rcsCountsLoader } from "./pages/count/RcsCounts"
+import { loader as editCountLoader } from "./pages/count/EditCount"
+import { loader as deleteCountLoader } from "./pages/count/DeleteCount"
 
 const router = createBrowserRouter([
   {

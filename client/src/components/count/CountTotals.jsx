@@ -1,4 +1,4 @@
-import { useRcsCountsContext } from "../pages/RcsCounts"
+import { useRcsCountsContext } from "../../pages/count/RcsCounts"
 
 const CountTotals = () => {
   const {
@@ -10,12 +10,30 @@ const CountTotals = () => {
         Totals
       </h1>
 
-      <TotalContents value={males} text='males' />
-      <TotalContents value={females} text='females' />
-      <TotalContents value={converts} text='converts' />
-      <TotalContents value={workForce} text='work force' />
-      <TotalContents value={firstTimers} text='first timers' />
-      <TotalContents value={totalCount} text='total count' />
+      <TotalContents
+        value={new Intl.NumberFormat().format(males)}
+        text='males'
+      />
+      <TotalContents
+        value={new Intl.NumberFormat().format(females)}
+        text='females'
+      />
+      <TotalContents
+        value={new Intl.NumberFormat().format(converts)}
+        text='r.converts'
+      />
+      <TotalContents
+        value={new Intl.NumberFormat().format(workForce)}
+        text='work force'
+      />
+      <TotalContents
+        value={new Intl.NumberFormat().format(firstTimers)}
+        text='first timers'
+      />
+      <TotalContents
+        value={new Intl.NumberFormat().format(totalCount)}
+        text='total count'
+      />
     </div>
   )
 }

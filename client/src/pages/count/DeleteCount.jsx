@@ -5,9 +5,9 @@ import { GiBowman } from "react-icons/gi"
 import { PiBaby } from "react-icons/pi"
 import { Link } from "react-router-dom"
 import { useLoaderData, useNavigate } from "react-router-dom"
-import customFetch from "../utils/customFetch"
+import customFetch from "../../utils/customFetch"
 import { toast } from "react-toastify"
-import { months, days } from "../utils/constants"
+import { months, days } from "../../utils/constants"
 
 export const loader = async ({ params }) => {
   try {
