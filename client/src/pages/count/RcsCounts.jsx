@@ -122,7 +122,7 @@ const RcsCounts = () => {
   const values = { users, rcCounts, ids, totals }
   return (
     <RcsCountsContext.Provider value={values}>
-      <div className='p-1 lg:p-10 w-full h-full overflow-hidden'>
+      <div className='p-1 lg:p-10 w-full h-full'>
         {/* Search form */}
         <form
           onSubmit={handleSubmit}

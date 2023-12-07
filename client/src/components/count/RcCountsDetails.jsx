@@ -8,7 +8,7 @@ const RcCountsDetails = () => {
   const { rcCounts } = useRcsCountsContext()
 
   return (
-    <div className='w-full lg:w-[85%] overflow-x-auto m-auto'>
+    <div className='w-full lg:w-[85%] m-auto'>
       <table className='border lg:border-2 border-indigo-500 w-full bg-white'>
         {/* table head */}
         <thead className='bg-indigo-300'>
