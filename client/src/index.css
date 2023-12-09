@@ -29,6 +29,15 @@ body {
   border-radius: 6px;
 }
 
+/* .landing {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("/images/landing_img.svg");
+} */
+
 @keyframes spinner {
   to {
     transform: rotate(360deg);

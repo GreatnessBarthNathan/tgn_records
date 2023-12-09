@@ -1,6 +1,6 @@
 import { Logo } from "../components"
 import { Link } from "react-router-dom"
-import landingImg from "../assets/images/landing_img.svg"
+import landingImg from "../assets/images/landing_img_2.svg"
 
 const Landing = () => {
   return (
@@ -14,12 +14,13 @@ const Landing = () => {
           </h1>
 
           <p className='mt-10 text-slate-700 leading-7 text-sm md:text-base lg:leading-8'>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis,
-            earum. Officiis ratione sunt, maxime iure deleniti alias dolores in
-            illum mollitia velit! Minima blanditiis laborum mollitia error
-            officia temporibus obcaecati. Repellendus inventore natus nulla
-            eaque, maxime quod non consequatur saepe aperiam aut, officia
-            numquam recusandae dolorem id? Sapiente, similique veritatis.
+            Beloved, if you will consciously keep in sight our sole objective -
+            ESTABLISHING THE KINGDOM OF GOD AND IT'S CULTURE IN AND AMONGST MEN
+            - and meditate pensively on how this can really be possible,
+            especially when you think of the target of 6.2 Billion souls, then
+            by the Spirit, you find that your mind will regularly be devising
+            strategies.
+            <p className='mt-5'>- RPN</p>
           </p>
           <div className='mt-10'>
             <Link

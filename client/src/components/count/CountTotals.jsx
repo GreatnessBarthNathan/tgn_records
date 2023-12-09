@@ -11,27 +11,27 @@ const CountTotals = () => {
       </h1>
 
       <TotalContents
-        value={new Intl.NumberFormat().format(males)}
+        value={males ? new Intl.NumberFormat().format(males) : 0}
         text='males'
       />
       <TotalContents
-        value={new Intl.NumberFormat().format(females)}
+        value={females ? new Intl.NumberFormat().format(females) : 0}
         text='females'
       />
       <TotalContents
-        value={new Intl.NumberFormat().format(converts)}
+        value={converts ? new Intl.NumberFormat().format(converts) : 0}
         text='r.converts'
       />
       <TotalContents
-        value={new Intl.NumberFormat().format(workForce)}
+        value={workForce ? new Intl.NumberFormat().format(workForce) : 0}
         text='work force'
       />
       <TotalContents
-        value={new Intl.NumberFormat().format(firstTimers)}
+        value={firstTimers ? new Intl.NumberFormat().format(firstTimers) : 0}
         text='first timers'
       />
       <TotalContents
-        value={new Intl.NumberFormat().format(totalCount)}
+        value={totalCount ? new Intl.NumberFormat().format(totalCount) : 0}
         text='total count'
       />
     </div>
