@@ -7,6 +7,8 @@ const FormRow = ({
   required,
   defaultValue,
   extraStyle,
+  value,
+  onChange,
 }) => {
   return (
     <div className='w-full mb-2 mt-2'>
@@ -18,6 +20,8 @@ const FormRow = ({
         name={name}
         defaultValue={defaultValue}
         required={required}
+        value={value}
+        onChange={onChange}
         className={`border border-blue-200 w-full rounded p-2 mt-1 outline-0 ${extraStyle}`}
       />
     </div>

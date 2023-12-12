@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import { FormRow, FormSelect } from "../../components"
 import { Form, redirect, useNavigation } from "react-router-dom"
 import { MEETING_TYPE } from "../../utils/constants"
@@ -24,8 +25,26 @@ export const action = async ({ request }) => {
 }
 
 const AddCount = () => {
+  const [inputs, setInputs] = useState({
+    males: "",
+    females: "",
+    totalCount: "",
+  })
   const navigation = useNavigation()
   const isSubmitting = navigation.state === "submitting"
+
+  const sum = () => {
+    const total = Number(inputs.males) + Number(inputs.females)
+    setInputs({ ...inputs, totalCount: total })
+  }
+
+  useEffect(() => {
+    let intervalId = setInterval(() => {
+      sum()
+    }, 500)
+
+    return () => clearInterval(intervalId)
+  })
 
   return (
     <div className='w-full p-5 lg:p-10'>
@@ -40,12 +59,6 @@ const AddCount = () => {
             defaultValue={Object.values(MEETING_TYPE).NCR}
             list={Object.values(MEETING_TYPE)}
             labelText='Meeting Type'
-          />
-          <FormRow
-            type='number'
-            name='totalCount'
-            labelText='total count'
-            required
           />
           <FormRow
             type='number'
@@ -65,8 +78,30 @@ const AddCount = () => {
             labelText='retained converts'
             required
           />
-          <FormRow type='number' name='males' labelText='males' required />
-          <FormRow type='number' name='females' labelText='females' required />
+          <FormRow
+            type='number'
+            name='males'
+            labelText='males'
+            required
+            value={inputs.males}
+            onChange={(e) => setInputs({ ...inputs, males: e.target.value })}
+          />
+          <FormRow
+            type='number'
+            name='females'
+            labelText='females'
+            required
+            value={inputs.females}
+            onChange={(e) => setInputs({ ...inputs, females: e.target.value })}
+          />
+          <FormRow
+            type='number'
+            name='totalCount'
+            labelText='total count'
+            required
+            value={inputs.totalCount}
+            onChange={(e) => setInputs({ ...inputs })}
+          />
 
           <button
             type='submit'

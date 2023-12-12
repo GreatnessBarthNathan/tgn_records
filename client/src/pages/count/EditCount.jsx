@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import { FormRow, FormSelect } from "../../components"
 import { Form, redirect, useLoaderData, useNavigation } from "react-router-dom"
 import { MEETING_TYPE } from "../../utils/constants"
@@ -39,6 +40,26 @@ const EditCount = () => {
   const navigation = useNavigation()
   const isSubmitting = navigation.state === "submitting"
 
+  const [inputs, setInputs] = useState({
+    males: count.males,
+    females: count.females,
+    totalCount: count.totalCount,
+  })
+
+  const sum = () => {
+    const total = Number(inputs.males) + Number(inputs.females)
+
+    setInputs({ ...inputs, totalCount: total })
+  }
+
+  useEffect(() => {
+    let intervalId = setInterval(() => {
+      sum()
+    }, 500)
+
+    return () => clearInterval(intervalId)
+  })
+
   return (
     <div className='w-full p-5 lg:p-10'>
       <div className='bg-white p-5 md:p-10 rounded shadow-md'>
@@ -53,13 +74,7 @@ const EditCount = () => {
             list={Object.values(MEETING_TYPE)}
             labelText='Meeting Type'
           />
-          <FormRow
-            type='number'
-            name='totalCount'
-            labelText='total count'
-            defaultValue={count.totalCount}
-            required
-          />
+
           <FormRow
             type='number'
             name='firstTimers'
@@ -85,14 +100,24 @@ const EditCount = () => {
             type='number'
             name='males'
             labelText='males'
-            defaultValue={count.males}
+            value={inputs.males}
+            onChange={(e) => setInputs({ ...inputs, males: e.target.value })}
             required
           />
           <FormRow
             type='number'
             name='females'
             labelText='females'
-            defaultValue={count.females}
+            value={inputs.females}
+            onChange={(e) => setInputs({ ...inputs, females: e.target.value })}
+            required
+          />
+          <FormRow
+            type='number'
+            name='totalCount'
+            labelText='total count'
+            value={inputs.totalCount}
+            onChange={() => setInputs({ ...inputs })}
             required
           />
           {user.role === "admin" && (
