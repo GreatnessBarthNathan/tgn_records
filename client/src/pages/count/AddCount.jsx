@@ -28,13 +28,15 @@ const AddCount = () => {
   const [inputs, setInputs] = useState({
     males: "",
     females: "",
+    children: "",
     totalCount: "",
   })
   const navigation = useNavigation()
   const isSubmitting = navigation.state === "submitting"
 
   const sum = () => {
-    const total = Number(inputs.males) + Number(inputs.females)
+    const total =
+      Number(inputs.males) + Number(inputs.females) + Number(inputs.children)
     setInputs({ ...inputs, totalCount: total })
   }
 
@@ -57,7 +59,7 @@ const AddCount = () => {
           <FormSelect
             name='meetingType'
             defaultValue={Object.values(MEETING_TYPE).NCR}
-            list={Object.values(MEETING_TYPE)}
+            list={Object.values(MEETING_TYPE).sort()}
             labelText='Meeting Type'
           />
           <FormRow
@@ -96,11 +98,19 @@ const AddCount = () => {
           />
           <FormRow
             type='number'
+            name='children'
+            labelText='children'
+            required
+            value={inputs.children}
+            onChange={(e) => setInputs({ ...inputs, children: e.target.value })}
+          />
+          <FormRow
+            type='number'
             name='totalCount'
             labelText='total count'
             required
             value={inputs.totalCount}
-            onChange={(e) => setInputs({ ...inputs })}
+            // onChange={() => setInputs({ ...inputs })}
           />
 
           <button

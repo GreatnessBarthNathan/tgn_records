@@ -1,9 +1,9 @@
-import React from "react"
-import { FormRow } from "../components"
+import { FormRow, FormSelect } from "../components"
 import { Form, Link, redirect, useNavigation } from "react-router-dom"
 import customFetch from "../utils/customFetch"
 import { toast } from "react-toastify"
 import { Logo } from "../components"
+import { ROYAL_CHAPTER } from "../utils/constants"
 
 export const action = async ({ request }) => {
   const formData = await request.formData()
@@ -42,12 +42,10 @@ const Register = () => {
             extraStyle='capitalize'
             required
           />
-          <FormRow
-            type='text'
-            labelText='royal chapter'
+          <FormSelect
             name='royalChapter'
-            extraStyle='capitalize'
-            required
+            list={Object.values(ROYAL_CHAPTER).sort()}
+            labelText='royal chapter'
           />
           <FormRow
             type='text'

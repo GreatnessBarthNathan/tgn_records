@@ -44,10 +44,12 @@ const EditCount = () => {
     males: count.males,
     females: count.females,
     totalCount: count.totalCount,
+    children: count.children,
   })
 
   const sum = () => {
-    const total = Number(inputs.males) + Number(inputs.females)
+    const total =
+      Number(inputs.males) + Number(inputs.females) + Number(inputs.children)
 
     setInputs({ ...inputs, totalCount: total })
   }
@@ -111,6 +113,14 @@ const EditCount = () => {
             value={inputs.females}
             onChange={(e) => setInputs({ ...inputs, females: e.target.value })}
             required
+          />
+          <FormRow
+            type='number'
+            name='children'
+            labelText='children'
+            required
+            value={inputs.children}
+            onChange={(e) => setInputs({ ...inputs, children: e.target.value })}
           />
           <FormRow
             type='number'

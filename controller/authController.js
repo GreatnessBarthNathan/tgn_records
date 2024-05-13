@@ -14,6 +14,9 @@ export const register = async (req, res) => {
   req.body.password = await hashPassword(req.body.password)
   req.body.royalChapter.charAt(0).toUpperCase()
 
+  const userExists = await User.findOne({ royalChapter: req.body.royalChapter })
+  if (userExists)
+    throw new BadRequestError("Royal Chapter has already been registered")
   await User.create(req.body)
   res.status(StatusCodes.CREATED).json({ msg: "user created" })
 }

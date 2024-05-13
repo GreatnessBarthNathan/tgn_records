@@ -1,5 +1,3 @@
-import React from "react"
-
 const FormSelect = ({ name, defaultValue = "", list, labelText }) => {
   return (
     <div className='w-full mb-2 mt-2'>

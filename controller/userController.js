@@ -15,7 +15,9 @@ export const getAllUsers = async (req, res) => {
 
   if (!isAdmin) throw new UnAuthorizedError("unauthorized to access this route")
 
-  const users = await User.find({ role: "user" }).select("-password -email")
+  const users = await User.find({ role: "user" })
+    .select("-password -email")
+    .sort({ royalChapter: 1 })
   res.status(StatusCodes.OK).json({ count: users.length, users })
 }
 

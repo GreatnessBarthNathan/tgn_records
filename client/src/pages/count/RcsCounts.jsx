@@ -1,7 +1,7 @@
 import { useContext, createContext, useState, useEffect } from "react"
 import customFetch from "../../utils/customFetch"
 import { useLoaderData } from "react-router-dom"
-import { RcCountsTag, RcCountsDetails } from "../../components"
+import { RcCountsDetails } from "../../components"
 import { toast } from "react-toastify"
 import { months, days } from "../../utils/constants"
 
@@ -57,6 +57,7 @@ const RcsCounts = () => {
           const {
             males,
             females,
+            children,
             converts,
             firstTimers,
             workForce,
@@ -65,6 +66,7 @@ const RcsCounts = () => {
 
           totalValue.males += males
           totalValue.females += females
+          totalValue.children += children
           totalValue.converts += converts
           totalValue.firstTimers += firstTimers
           totalValue.workForce += workForce
@@ -76,6 +78,7 @@ const RcsCounts = () => {
         {
           males: 0,
           females: 0,
+          children: 0,
           converts: 0,
           firstTimers: 0,
           workForce: 0,
@@ -136,7 +139,7 @@ const RcsCounts = () => {
           />
           <button
             type='submit'
-            className='bg-indigo-500 text-white h-[50px] w-[25%] h-full outline-0 text-sm px-1'
+            className='bg-indigo-500 text-white w-[25%] h-full outline-0 text-sm px-1'
           >
             Search
           </button>
@@ -147,7 +150,7 @@ const RcsCounts = () => {
           {dateObj.year}
         </h1>
         <div className='flex justify-center space-x-2'>
-          <RcCountsTag styling='w-[15%] py-5 px-2 lg:block hidden' />
+          {/* <RcCountsTag styling='w-[15%] py-5 px-2 lg:block hidden' /> */}
           <RcCountsDetails />
         </div>
       </div>

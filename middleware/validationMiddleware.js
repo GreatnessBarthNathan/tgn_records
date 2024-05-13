@@ -84,6 +84,12 @@ export const validateCountIdParam = withValidationErrors([
   }),
 ])
 
+// Reports Validation
+export const validateReportInput = withValidationErrors([
+  body("title").notEmpty().withMessage("title is required"),
+  body("message").notEmpty().withMessage("message is required"),
+])
+
 // RC Finance Validation
 export const validateRcFinanceInput = withValidationErrors([
   body("meetingType").notEmpty().withMessage("meeting type is required"),

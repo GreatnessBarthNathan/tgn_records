@@ -15,8 +15,8 @@ const Landing = () => {
 
           <p className='mt-10 text-slate-700 leading-7 text-sm md:text-base lg:leading-8'>
             Beloved, if you will consciously keep in sight our sole objective -
-            ESTABLISHING THE KINGDOM OF GOD AND IT'S CULTURE IN AND AMONGST MEN
-            - and meditate pensively on how this can really be possible,
+            ESTABLISHING THE KINGDOM OF GOD AND ITS CULTURE IN AND AMONGST MEN -
+            and meditate pensively on how this can really be possible,
             especially when you think of the target of 6.2 Billion souls, then
             by the Spirit, you find that your mind will regularly be devising
             strategies.

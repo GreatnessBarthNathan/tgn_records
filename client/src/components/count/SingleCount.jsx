@@ -1,4 +1,5 @@
 import { FaCalendarAlt, FaMale, FaFemale } from "react-icons/fa"
+import { FaChildren } from "react-icons/fa6"
 import { MdAllOut } from "react-icons/md"
 import { SiConvertio } from "react-icons/si"
 import { GiBowman } from "react-icons/gi"
@@ -17,6 +18,7 @@ const SingleCount = ({
   females,
   converts,
   enteredAt,
+  children,
 }) => {
   const { user } = useDashboardContext()
   const countDate = new Date(enteredAt)
@@ -70,6 +72,10 @@ const SingleCount = ({
         <p className='flex items-center space-x-2 my-1 text-xs md:text-base capitalize'>
           <span>{<SiConvertio />}</span>
           <span>r.converts - {new Intl.NumberFormat().format(converts)}</span>
+        </p>
+        <p className='flex items-center space-x-2 my-1 text-xs md:text-base capitalize'>
+          <span>{<FaChildren />}</span>
+          <span>children - {new Intl.NumberFormat().format(children)}</span>
         </p>
       </div>
       <div className='flex items-center space-x-5 text-slate-700 capitalize'>

@@ -1,51 +1,78 @@
-import React from "react"
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom"
 
-export const TableHead = ({ text, btext }) => {
+export const TableHead = ({ text, btext, style }) => {
   return (
-    <th className='p-1 lg:p-2 capitalize border-r border-b lg:border-r-2 lg:border-b-2 border-indigo-500 text-slate-900 font-semibold text-xs lg:text-base'>
+    <h2 className={style}>
       <span className='block lg:hidden'>{text}</span>
       <span className='hidden lg:block'>{btext}</span>
-    </th>
+    </h2>
   )
 }
 
-export const TableData = ({ text, user }) => {
+export const TableData = ({ text, user, style }) => {
   return (
-    <td className='p-1 lg:p-2 border-b border-r lg:border-b-2 lg:border-r-2 border-indigo-500 text-center capitalize hover:text-indigo-500 text-[10px] lg:text-base'>
+    <p className={style}>
       <Link to={`/dashboard/all-counts/${user}`}>{text}</Link>
-    </td>
+    </p>
   )
 }
 
 export const TableRow = ({
-  _id,
   royalChapter,
   meetingType,
   males,
   females,
   workForce,
   converts,
+  children,
   firstTimers,
   totalCount,
   user,
 }) => {
   return (
-    <tr className='hover:bg-indigo-100'>
-      <TableData text={royalChapter} user={user} />
-      <TableData text={meetingType} user={user} />
-      <TableData text={new Intl.NumberFormat().format(males)} user={user} />
-      <TableData text={new Intl.NumberFormat().format(females)} user={user} />
-      <TableData text={new Intl.NumberFormat().format(workForce)} user={user} />
-      <TableData text={new Intl.NumberFormat().format(converts)} user={user} />
-      <TableData
-        text={new Intl.NumberFormat().format(firstTimers)}
-        user={user}
-      />
-      <TableData
-        text={new Intl.NumberFormat().format(totalCount)}
-        user={user}
-      />
-    </tr>
+    <div className='bg-white hover:bg-indigo-100 grid grid-cols-12 w-full hover:cursor-pointer'>
+      <p className='p-1 lg:p-2 text-[8px] lg:text-sm col-span-2 border border-t-0'>
+        <Link to={`/dashboard/all-counts/${user}`}>{royalChapter}</Link>
+      </p>
+      <p className='p-1 lg:p-2 text-[8px] lg:text-sm col-span-3 border border-l-0 border-t-0'>
+        <Link to={`/dashboard/all-counts/${user}`}>{meetingType}</Link>
+      </p>
+      <p className='p-1 lg:p-2 text-[8px] lg:text-sm border border-l-0 border-t-0'>
+        <Link to={`/dashboard/all-counts/${user}`}>
+          {new Intl.NumberFormat().format(males)}
+        </Link>
+      </p>
+      <p className='p-1 lg:p-2 text-[8px] lg:text-sm border border-l-0 border-t-0'>
+        <Link to={`/dashboard/all-counts/${user}`}>
+          {new Intl.NumberFormat().format(females)}
+        </Link>
+      </p>
+      <p className='p-1 lg:p-2 text-[8px] lg:text-sm border border-l-0 border-t-0'>
+        <Link to={`/dashboard/all-counts/${user}`}>
+          {new Intl.NumberFormat().format(children)}
+        </Link>
+      </p>
+      <p className='p-1 lg:p-2 text-[8px] lg:text-sm border border-l-0 border-t-0'>
+        <Link to={`/dashboard/all-counts/${user}`}>
+          {new Intl.NumberFormat().format(workForce)}
+        </Link>
+      </p>
+      <p className='p-1 lg:p-2 text-[8px] lg:text-sm border border-l-0 border-t-0'>
+        <Link to={`/dashboard/all-counts/${user}`}>
+          {new Intl.NumberFormat().format(converts)}
+        </Link>
+      </p>
+      <p className='p-1 lg:p-2 text-[8px] lg:text-sm border border-l-0 border-t-0'>
+        <Link to={`/dashboard/all-counts/${user}`}>
+          {new Intl.NumberFormat().format(firstTimers)}
+        </Link>
+      </p>
+      <p className='p-1 lg:p-2 text-[8px] lg:text-sm col-span-1 border border-l-0 border-t-0'>
+        <Link to={`/dashboard/all-counts/${user}`}>
+          {new Intl.NumberFormat().format(totalCount)}
+        </Link>
+      </p>
+    </div>
   )
 }
