@@ -49,7 +49,7 @@ const Register = () => {
           />
           <FormRow
             type='text'
-            labelText='location'
+            labelText='address'
             name='location'
             extraStyle='capitalize'
             required
@@ -71,7 +71,7 @@ const Register = () => {
             {isSubmitting ? "Submitting..." : "Submit"}
           </button>
           <p className='text-center mt-3 mb-3'>
-            Already a member?{" "}
+            Have an account?{" "}
             <Link to='/login' className='text-green-600'>
               Login
             </Link>
