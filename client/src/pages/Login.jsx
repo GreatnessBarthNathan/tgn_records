@@ -1,4 +1,3 @@
-import React from "react"
 import { FormRow } from "../components"
 import { Form, Link, redirect, useNavigation } from "react-router-dom"
 import customFetch from "../utils/customFetch"
@@ -51,7 +50,7 @@ const Login = () => {
             {isSubmitting ? "Submitting..." : "Submit"}
           </button>
           <p className='text-center mt-3 mb-3'>
-            Don't have an account?{" "}
+            Do not have an account?{" "}
             <Link to='/register' className='text-green-600'>
               Register
             </Link>

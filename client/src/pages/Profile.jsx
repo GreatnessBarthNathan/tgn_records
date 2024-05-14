@@ -1,4 +1,4 @@
-import { FormRow, FormSelect } from "../components"
+import { FormRow } from "../components"
 import { Form, redirect, useNavigation } from "react-router-dom"
 import customFetch from "../utils/customFetch"
 import { toast } from "react-toastify"
@@ -53,18 +53,20 @@ const Profile = () => {
             extraStyle='capitalize'
             required
           />
-          <FormRow
-            type='text'
-            name='royalChapter'
-            labelText='royal chapter'
-            defaultValue={user.royalChapter}
-            extraStyle='capitalize'
-            required
-          />
+          {user.role === "admin" && (
+            <FormRow
+              type='text'
+              name='royalChapter'
+              labelText='royal chapter'
+              defaultValue={user.royalChapter}
+              extraStyle='capitalize'
+              required
+            />
+          )}
           <FormRow
             type='text'
             name='location'
-            labelText='location'
+            labelText='address'
             defaultValue={user.location}
             extraStyle='capitalize'
             required
