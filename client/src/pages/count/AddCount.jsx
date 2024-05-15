@@ -30,6 +30,9 @@ const AddCount = () => {
     females: "",
     children: "",
     totalCount: "",
+    firstTimers: "",
+    workForce: "",
+    converts: "",
   })
   const navigation = useNavigation()
   const isSubmitting = navigation.state === "submitting"
@@ -37,7 +40,9 @@ const AddCount = () => {
   const sum = () => {
     const total =
       Number(inputs.males) + Number(inputs.females) + Number(inputs.children)
-    setInputs({ ...inputs, totalCount: total })
+    const confirmation = Number(inputs.firstTimers) + Number(inputs.workForce)
+    const newConverts = Number(total) - Number(confirmation)
+    setInputs({ ...inputs, totalCount: total, converts: newConverts })
   }
 
   useEffect(() => {
@@ -64,24 +69,6 @@ const AddCount = () => {
           />
           <FormRow
             type='number'
-            name='firstTimers'
-            labelText='first timers'
-            required
-          />
-          <FormRow
-            type='number'
-            name='workForce'
-            labelText='work force'
-            required
-          />
-          <FormRow
-            type='number'
-            name='converts'
-            labelText='retained converts'
-            required
-          />
-          <FormRow
-            type='number'
             name='males'
             labelText='males'
             required
@@ -104,6 +91,34 @@ const AddCount = () => {
             value={inputs.children}
             onChange={(e) => setInputs({ ...inputs, children: e.target.value })}
           />
+          <FormRow
+            type='number'
+            name='firstTimers'
+            labelText='first timers'
+            required
+            value={inputs.firstTimers}
+            onChange={(e) =>
+              setInputs({ ...inputs, firstTimers: e.target.value })
+            }
+          />
+          <FormRow
+            type='number'
+            name='workForce'
+            labelText='work force'
+            required
+            value={inputs.workForce}
+            onChange={(e) =>
+              setInputs({ ...inputs, workForce: e.target.value })
+            }
+          />
+          <FormRow
+            type='number'
+            name='converts'
+            labelText='retained converts'
+            required
+            value={inputs.converts}
+          />
+
           <FormRow
             type='number'
             name='totalCount'

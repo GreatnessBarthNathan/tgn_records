@@ -45,13 +45,17 @@ const EditCount = () => {
     females: count.females,
     totalCount: count.totalCount,
     children: count.children,
+    firstTimers: count.firstTimers,
+    workForce: count.workForce,
+    converts: count.converts,
   })
 
   const sum = () => {
     const total =
       Number(inputs.males) + Number(inputs.females) + Number(inputs.children)
-
-    setInputs({ ...inputs, totalCount: total })
+    const confirmation = Number(inputs.firstTimers) + Number(inputs.workForce)
+    const newConverts = Number(total) - Number(confirmation)
+    setInputs({ ...inputs, totalCount: total, converts: newConverts })
   }
 
   useEffect(() => {
@@ -75,28 +79,6 @@ const EditCount = () => {
             defaultValue={count.meetingType}
             list={Object.values(MEETING_TYPE)}
             labelText='Meeting Type'
-          />
-
-          <FormRow
-            type='number'
-            name='firstTimers'
-            labelText='first timers'
-            defaultValue={count.firstTimers}
-            required
-          />
-          <FormRow
-            type='number'
-            name='workForce'
-            labelText='work force'
-            defaultValue={count.workForce}
-            required
-          />
-          <FormRow
-            type='number'
-            name='converts'
-            labelText='converts'
-            defaultValue={count.converts}
-            required
           />
           <FormRow
             type='number'
@@ -122,6 +104,34 @@ const EditCount = () => {
             value={inputs.children}
             onChange={(e) => setInputs({ ...inputs, children: e.target.value })}
           />
+          <FormRow
+            type='number'
+            name='firstTimers'
+            labelText='first timers'
+            value={inputs.firstTimers}
+            required
+            onChange={(e) =>
+              setInputs({ ...inputs, firstTimers: e.target.value })
+            }
+          />
+          <FormRow
+            type='number'
+            name='workForce'
+            labelText='work force'
+            required
+            value={inputs.workForce}
+            onChange={(e) =>
+              setInputs({ ...inputs, workForce: e.target.value })
+            }
+          />
+          <FormRow
+            type='number'
+            name='converts'
+            labelText='converts'
+            value={inputs.converts}
+            required
+          />
+
           <FormRow
             type='number'
             name='totalCount'
