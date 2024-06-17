@@ -44,6 +44,7 @@ const AllCounts = () => {
   // handle submit
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setPage(0)
     const formData = new FormData(e.currentTarget)
     const { meetingType, from, to } = Object.fromEntries(formData)
 
@@ -86,7 +87,14 @@ const AllCounts = () => {
     }
   }
 
-  const values = { allCounts, accOwner, approvedCounts }
+  const values = {
+    allCounts,
+    accOwner,
+    approvedCounts,
+    page,
+    noOfPages,
+    paginatedArray,
+  }
   useEffect(() => {
     const intervalID = setInterval(() => {
       setApprovedCounts(newCounts)
