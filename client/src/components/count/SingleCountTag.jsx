@@ -12,12 +12,12 @@ const SingleCountTag = ({ _id, royalChapter }) => {
       className='flex items-center space-x-1 md:space-x-3 capitalize lg:uppercase lg:mb-2'
     >
       <div
-        className={` w-[10px] h-[10px] lg:w-[15px] lg:h-[15px] border border-blue-500 flex justify-center items-center rounded ${
+        className={` w-[8px] h-[8px] lg:w-[15px] lg:h-[15px] border border-blue-500 flex justify-center items-center rounded ${
           ids.includes(_id) ? "bg-indigo-500" : "bg-white"
         }`}
       >
         <button
-          className={`text-[8px] flex justify-center items-center ${
+          className={`text-[6px] flex justify-center items-center ${
             ids.includes(_id) ? "text-white" : "text-transparent"
           }`}
         >
@@ -32,11 +32,11 @@ const SingleCountTag = ({ _id, royalChapter }) => {
       </Link>
       <Link
         to={`/dashboard/all-counts/${_id}`}
-        className='text-[10px] hover:text-indigo-500 hover:font-semibold md:hidden'
+        className='text-[6px] hover:text-indigo-500 hover:font-semibold md:hidden'
       >
-        {royalChapter.length < 7
+        {royalChapter.length < 15
           ? royalChapter
-          : royalChapter.substring(0, 7) + "."}
+          : royalChapter.substring(0, 15) + "."}
       </Link>
     </div>
   )

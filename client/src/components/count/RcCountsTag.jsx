@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+/* eslint-disable react/prop-types */
 import { useRcsCountsContext } from "../../pages/count/RcsCounts"
 import SingleCountTag from "./SingleCountTag"
 

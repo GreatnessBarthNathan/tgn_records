@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useRcsCountsContext } from "../../pages/count/RcsCounts"
 
 const CountTotals = () => {
@@ -14,7 +15,7 @@ const CountTotals = () => {
   } = useRcsCountsContext()
   return (
     <div className='w-[150px] md:w-[200px] bg-white ml-auto rounded-md border lg:border-2 border-indigo-500'>
-      <h1 className='text-center p-1 font-semibold text-sm lg:text-base'>
+      <h1 className='text-center p-1 font-semibold text-xs md:text-sm lg:text-base'>
         Totals
       </h1>
 
@@ -53,10 +54,10 @@ const CountTotals = () => {
 const TotalContents = ({ text, value }) => {
   return (
     <p className='border-t lg:border-t-2 border-indigo-500 grid grid-cols-2 capitalize'>
-      <span className='border-r border-indigo-500 p-1 text-[10px] md:text-base'>
+      <span className='border-r border-indigo-500 p-1 text-[8px] md:text-sm lg:text-base'>
         {text}
       </span>
-      <span className='text-center text-[10px] p-1 md:text-base'>
+      <span className='text-center text-[8px] p-1 md:text-sm lg:text-base'>
         {value || 0}
       </span>
     </p>

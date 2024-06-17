@@ -3,9 +3,9 @@ import { useDashboardContext } from "../pages/DashboardLayout"
 import PageLink from "./PageLinks"
 import { TbRelationManyToMany } from "react-icons/tb"
 import { LuTally5 } from "react-icons/lu"
-import { FaMoneyBill, FaBriefcase } from "react-icons/fa"
 import { MdGroups, MdSettings } from "react-icons/md"
-import { CgProfile } from "react-icons/cg"
+import { PiStrategy } from "react-icons/pi"
+import { CgProfile, CgCommunity } from "react-icons/cg"
 import Logo from "./Logo"
 
 const SmallSidebar = () => {
@@ -56,6 +56,20 @@ const SmallSidebar = () => {
               url='/dashboard/rcs-counts'
               text='All RC-Counts'
               icon={<TbRelationManyToMany />}
+            />
+          )}
+          {user.role === "user" && (
+            <PageLink
+              url='/dashboard/concept_strategy'
+              text='Concept&Strategy'
+              icon={<PiStrategy />}
+            />
+          )}
+          {user.role === "user" && (
+            <PageLink
+              url='/dashboard/members'
+              text='Membership'
+              icon={<CgCommunity />}
             />
           )}
           <PageLink

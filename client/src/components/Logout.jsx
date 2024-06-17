@@ -14,13 +14,13 @@ const Logout = () => {
         onClick={() => setShowLogout(!showLogout)}
       >
         <CgProfile />
-        <h2 className='text-xs md:text-sm'>{user.royalChapter}</h2>
+        <h2 className='text-[8px] md:text-sm'>{user.royalChapter}</h2>
         <FaCaretDown />
       </div>
 
       <div
         onClick={logout}
-        className={`absolute text-xs md:text-sm text-center bg-indigo-500 text-white p-1 rounded w-full top-[50px] cursor-pointer hover:bg-indigo-800 ease-in-out duration-300 ${
+        className={`absolute text-[8px] md:text-sm text-center bg-indigo-500 text-white p-1 rounded w-full top-[50px] cursor-pointer hover:bg-indigo-800 ease-in-out duration-300 ${
           !showLogout && "hidden"
         }`}
       >

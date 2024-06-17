@@ -129,17 +129,17 @@ const RcsCounts = () => {
         {/* Search form */}
         <form
           onSubmit={handleSubmit}
-          className='flex w-[60%] lg:w-[40%] ml-auto mb-10 border border-indigo-500 rounded overflow-hidden h-[35px] md:h-[40px] items-center'
+          className='flex w-[60%] lg:w-[40%] ml-auto mb-10 border border-indigo-500 rounded overflow-hidden h-[25px] md:h-[40px] items-center'
         >
           <input
             type='date'
             name='enteredAt'
-            className='w-[80%] px-2 h-full'
+            className='w-[80%] px-2 h-full text-sm'
             required
           />
           <button
             type='submit'
-            className='bg-indigo-500 text-white w-[25%] h-full outline-0 text-sm px-1'
+            className='bg-indigo-500 text-white w-[25%] h-full outline-0 text-xs md:text-sm px-1'
           >
             Search
           </button>

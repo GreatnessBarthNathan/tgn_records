@@ -104,3 +104,34 @@ export const validateRcFinanceInput = withValidationErrors([
   body("TGP").notEmpty().withMessage("TGP is required"),
   body("thanksgiving").notEmpty().withMessage("thanksgiving is required"),
 ])
+
+// TEN VALIDATION
+export const validateTenInput = withValidationErrors([
+  body("name").notEmpty().withMessage("name is required"),
+  body("leader").notEmpty().withMessage("leader is required"),
+  body("assistant").notEmpty().withMessage("assistant is required"),
+  body("VIP").notEmpty().withMessage("VIP is required"),
+])
+
+// MEMBER VALIDATION
+export const validateMemberInput = withValidationErrors([
+  body("firstName").notEmpty().withMessage("first name is required"),
+  body("lastName").notEmpty().withMessage("last name is required"),
+  body("middleName").notEmpty().withMessage("middle name is required"),
+  body("phoneNumber").notEmpty().withMessage("phone number is required"),
+  body("email").notEmpty().withMessage("email is required"),
+  body("sex").notEmpty().withMessage("sex is required"),
+  body("DOB").notEmpty().withMessage("DOB is required"),
+  body("address").notEmpty().withMessage("address is required"),
+  body("role").notEmpty().withMessage("role is required"),
+  body("category").notEmpty().withMessage("category is required"),
+  body("TEN").notEmpty().withMessage("TEN is required"),
+])
+
+// CONCEPT AND STRATEGY VALIDATION
+export const validateCSInput = withValidationErrors([
+  body("phoneNumber").notEmpty().withMessage("phone number is required"),
+  body("name").notEmpty().withMessage("name is required"),
+  body("TEN").notEmpty().withMessage("TEN is required"),
+  body("suggestion").notEmpty().withMessage("suggestion is required"),
+])

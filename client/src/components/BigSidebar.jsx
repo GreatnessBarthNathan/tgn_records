@@ -1,10 +1,11 @@
 import { useDashboardContext } from "../pages/DashboardLayout"
 import PageLink from "./PageLinks"
 import { LuTally5 } from "react-icons/lu"
-import { FaMoneyBill, FaBriefcase } from "react-icons/fa"
+// import { FaMoneyBill, FaBriefcase } from "react-icons/fa"
 import { TbRelationManyToMany } from "react-icons/tb"
 import { MdGroups, MdSettings } from "react-icons/md"
-import { CgProfile } from "react-icons/cg"
+import { CgProfile, CgCommunity } from "react-icons/cg"
+import { PiStrategy } from "react-icons/pi"
 import Logo from "./Logo"
 
 const BigSidebar = () => {
@@ -59,6 +60,20 @@ const BigSidebar = () => {
               url='/dashboard/rcs-counts'
               text='All RC-Counts'
               icon={<TbRelationManyToMany />}
+            />
+          )}
+          {user.role === "user" && (
+            <PageLink
+              url='/dashboard/concept_strategy'
+              text='Concept&Strategy'
+              icon={<PiStrategy />}
+            />
+          )}
+          {user.role === "user" && (
+            <PageLink
+              url='/dashboard/members'
+              text='Membership'
+              icon={<CgCommunity />}
             />
           )}
           <PageLink

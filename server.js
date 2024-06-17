@@ -19,6 +19,9 @@ import userRouter from "./routes/userRoutes.js"
 import countRouter from "./routes/countRoutes.js"
 import reportRouter from "./routes/reportRoutes.js"
 import rcFinanceRouter from "./routes/rcFinanceRoutes.js"
+import tenRouter from "./routes/tenRoutes.js"
+import memberRouter from "./routes/memberRoutes.js"
+import csRouter from "./routes/csRoutes.js"
 
 const app = express()
 
@@ -39,6 +42,9 @@ app.use(express.json())
 app.use(helmet())
 app.use(mongoSanitize())
 
+app.use("/api/v1/concept_strategy", authenticateUser, csRouter)
+app.use("/api/v1/member", authenticateUser, memberRouter)
+app.use("/api/v1/ten", authenticateUser, tenRouter)
 app.use("/api/v1/rc-finance", authenticateUser, rcFinanceRouter)
 app.use("/api/v1/report", authenticateUser, reportRouter)
 app.use("/api/v1/count", authenticateUser, countRouter)

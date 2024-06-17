@@ -13,49 +13,49 @@ const RcCountsDetails = () => {
         {/* table head */}
         <div className='bg-white sticky top-0 grid grid-cols-12 border border-t-indigo-500 border-b-indigo-500'>
           <TableHead
-            text='RC'
+            text='royal chapter'
             btext='royal chapter'
-            style='p-1 lg:p-2 capitalize col-span-2 border border-l-0 border-t-0 border-b-0 text-[8px] lg:text-sm'
+            style='p-1 lg:p-2 capitalize col-span-3 border border-l-0 border-t-0 border-b-0 text-[6px] md:text-[8px] lg:text-sm'
           />
           <TableHead
-            text='MT'
+            text='meeting type'
             btext='meeting type'
-            style='p-1 lg:p-2 capitalize col-span-3 border border-l-0 border-t-0 border-b-0 text-[8px] lg:text-sm'
+            style='p-1 lg:p-2 capitalize col-span-2 border border-l-0 border-t-0 border-b-0 text-[6px] md:text-[8px] lg:text-sm'
           />
           <TableHead
-            text='M'
+            text='males'
             btext='males'
-            style='p-1 lg:p-2 capitalize border border-l-0 border-t-0 border-b-0 text-[8px] lg:text-sm'
+            style='p-1 lg:p-2 capitalize border border-l-0 border-t-0 border-b-0 text-[6px] md:text-[8px] lg:text-sm'
           />
           <TableHead
-            text='F'
+            text='females'
             btext='females'
-            style='p-1 lg:p-2 capitalize border border-l-0 border-t-0 border-b-0 text-[8px] lg:text-sm'
+            style='p-1 lg:p-2 capitalize border border-l-0 border-t-0 border-b-0 text-[6px] md:text-[8px] lg:text-sm'
           />
           <TableHead
-            text='Chil.'
+            text='children'
             btext='children'
-            style='p-1 lg:p-2 capitalize border border-l-0 border-t-0 border-b-0 text-[8px] lg:text-sm'
+            style='p-1 lg:p-2 capitalize border border-l-0 border-t-0 border-b-0 text-[6px] md:text-[8px] lg:text-sm'
           />
           <TableHead
             text='WF'
             btext='work force'
-            style='p-1 lg:p-2 capitalize border border-l-0 border-t-0 border-b-0 text-[8px] lg:text-sm'
+            style='p-1 lg:p-2 capitalize border border-l-0 border-t-0 border-b-0 text-[6px] md:text-[8px] lg:text-sm'
           />
           <TableHead
             text='RCV'
             btext='R.converts'
-            style='p-1 lg:p-2 capitalize border border-l-0 border-t-0 border-b-0 text-[8px] lg:text-sm'
+            style='p-1 lg:p-2 capitalize border border-l-0 border-t-0 border-b-0 text-[6px] md:text-[8px] lg:text-sm'
           />
           <TableHead
-            text='FT'
+            text='F.timers'
             btext='first timers'
-            style='p-1 lg:p-2 capitalize border border-l-0 border-t-0 border-b-0 text-[8px] lg:text-sm'
+            style='p-1 lg:p-2 capitalize border border-l-0 border-t-0 border-b-0 text-[6px] md:text-[8px] lg:text-sm'
           />
           <TableHead
-            text='T'
+            text='total'
             btext='total'
-            style='p-1 lg:p-2 capitalize col-span-1 border border-l-0 border-t-0 border-b-0 text-[8px] lg:text-sm'
+            style='p-1 lg:p-2 capitalize col-span-1 border border-l-0 border-t-0 border-b-0 text-[6px] md:text-[8px] lg:text-sm'
           />
         </div>
         {/* table body */}
