@@ -2,8 +2,8 @@ import { useAllCountsContext } from "../../pages/count/AllCounts"
 import SingleCount from "./SingleCount"
 
 const CountsContainer = () => {
-  const { allCounts, accOwner } = useAllCountsContext()
-
+  const { allCounts, accOwner, approvedCounts } = useAllCountsContext()
+  // console.log(allCounts)
   if (allCounts?.length === 0) {
     return (
       <div>
@@ -23,7 +23,7 @@ const CountsContainer = () => {
         RC {accOwner.royalChapter}
       </h1>
       <h2 className='capitalize my-5 text-slate-800 text-2xl'>
-        {allCounts.length} record{allCounts.length > 1 && "s"} found
+        {approvedCounts.length} record{approvedCounts.length > 1 && "s"}
       </h2>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
         {allCounts.map((count) => {

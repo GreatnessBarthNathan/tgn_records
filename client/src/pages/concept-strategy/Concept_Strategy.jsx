@@ -16,7 +16,7 @@ export const loader = async () => {
 
 function Concept_Strategy() {
   const { allCS } = useLoaderData()
-  console.log(allCS)
+
   return (
     <main className='w-full p-1 md:p-5 lg:p-10'>
       <h1 className='text-sm lg:text-3xl mb-5 font-bold'>Concept&Strategy</h1>

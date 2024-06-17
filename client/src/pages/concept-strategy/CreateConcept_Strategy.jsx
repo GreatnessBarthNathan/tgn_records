@@ -20,7 +20,7 @@ export const action = async ({ request }) => {
   const data = Object.fromEntries(formData)
   try {
     await customFetch.post("/concept_strategy", data)
-    toast.success("count record added")
+    toast.success("suggestion added")
 
     return redirect(`/dashboard/concept_strategy`)
   } catch (error) {

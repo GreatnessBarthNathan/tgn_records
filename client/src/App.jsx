@@ -20,7 +20,7 @@ import {
   Concept_Strategy,
   CreateConcept_Strategy,
   Members,
-  SimpleConcept_Strategy,
+  SingleConcept_Strategy,
 } from "./pages"
 
 // actions
@@ -40,6 +40,7 @@ import { loader as editCountLoader } from "./pages/count/EditCount"
 import { loader as deleteCountLoader } from "./pages/count/DeleteCount"
 import { loader as concept_strategyLoader } from "./pages/concept-strategy/Concept_Strategy"
 import { loader as createCSLoader } from "./pages/concept-strategy/CreateConcept_Strategy"
+import { loader as singleCSLoader } from "./pages/concept-strategy/SingleConcept_Strategy"
 
 const router = createBrowserRouter([
   {
@@ -120,7 +121,8 @@ const router = createBrowserRouter([
       },
       {
         path: "concept_strategy/:id",
-        element: <SimpleConcept_Strategy />,
+        element: <SingleConcept_Strategy />,
+        loader: singleCSLoader,
       },
       {
         path: "members",
