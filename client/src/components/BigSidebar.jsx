@@ -1,12 +1,13 @@
 import { useDashboardContext } from "../pages/DashboardLayout"
 import PageLink from "./PageLinks"
-import { LuTally5 } from "react-icons/lu"
-// import { FaMoneyBill, FaBriefcase } from "react-icons/fa"
 import { TbRelationManyToMany } from "react-icons/tb"
 import { MdGroups, MdSettings } from "react-icons/md"
-import { CgProfile, CgCommunity } from "react-icons/cg"
+import { CgProfile } from "react-icons/cg"
 import { PiStrategy } from "react-icons/pi"
 import Logo from "./Logo"
+import { FaPeopleGroup } from "react-icons/fa6"
+import { FaLayerGroup } from "react-icons/fa"
+import { GrGroup } from "react-icons/gr"
 
 const BigSidebar = () => {
   const { showBigSidebar, user } = useDashboardContext()
@@ -26,7 +27,7 @@ const BigSidebar = () => {
       <div className='h-full pt-[10px]'>
         {/* logo */}
         <Logo
-          container='w-[50%] m-auto mb-[30px] bg-[whitesmoke] rounded-full shadow-md'
+          container='w-[50%] m-auto mb-[30px] bg-[whitesmoke] rounded-full border-2 border-indigo-500'
           image='w-full'
         />
         {/* links */}
@@ -47,7 +48,7 @@ const BigSidebar = () => {
             <PageLink
               url={`/dashboard/all-counts/${user._id}`}
               text='All Counts'
-              icon={<LuTally5 />}
+              icon={<FaLayerGroup />}
             />
           )}
           {/* <PageLink
@@ -73,8 +74,11 @@ const BigSidebar = () => {
             <PageLink
               url='/dashboard/members'
               text='Membership'
-              icon={<CgCommunity />}
+              icon={<FaPeopleGroup />}
             />
+          )}
+          {user.role === "user" && (
+            <PageLink url='/dashboard/ten' text='TENs' icon={<GrGroup />} />
           )}
           <PageLink
             url={`/dashboard/profile/${user._id}`}

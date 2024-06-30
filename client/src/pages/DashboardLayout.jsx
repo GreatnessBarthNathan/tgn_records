@@ -37,6 +37,30 @@ const DashboardLayout = () => {
 
   const isLoading = navigation.state === "loading"
 
+  const fetchTENs = async () => {
+    try {
+      const {
+        data: { allTens },
+      } = await customFetch.get("/ten")
+      return allTens
+    } catch (error) {
+      toast.error(error?.response?.data?.msg)
+    }
+  }
+
+  // FETCH MEMBERS
+  const fetchMembers = async () => {
+    try {
+      const {
+        data: { members },
+      } = await customFetch.get("/member")
+      return members
+    } catch (error) {
+      toast.error(error?.response?.data?.msg)
+      return error
+    }
+  }
+
   // logout user
   const logout = async () => {
     try {
@@ -55,6 +79,8 @@ const DashboardLayout = () => {
     setShowBigSidebar,
     showSmallSidebar,
     setShowSmallSidebar,
+    fetchMembers,
+    fetchTENs,
     logout,
   }
   return (

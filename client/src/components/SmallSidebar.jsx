@@ -1,11 +1,12 @@
-import { FaTimes } from "react-icons/fa"
+import { FaLayerGroup, FaTimes } from "react-icons/fa"
+import { FaPeopleGroup } from "react-icons/fa6"
 import { useDashboardContext } from "../pages/DashboardLayout"
 import PageLink from "./PageLinks"
 import { TbRelationManyToMany } from "react-icons/tb"
-import { LuTally5 } from "react-icons/lu"
 import { MdGroups, MdSettings } from "react-icons/md"
 import { PiStrategy } from "react-icons/pi"
-import { CgProfile, CgCommunity } from "react-icons/cg"
+import { CgProfile } from "react-icons/cg"
+import { GrGroup } from "react-icons/gr"
 import Logo from "./Logo"
 
 const SmallSidebar = () => {
@@ -24,7 +25,7 @@ const SmallSidebar = () => {
           onClick={() => setShowSmallSidebar(false)}
         >
           <Logo
-            container='w-[30%] m-auto mb-[25px] bg-[whitesmoke] rounded-full shadow-md'
+            container='w-[30%] m-auto mb-[25px] bg-[whitesmoke] rounded-full border-2 border-indigo-500'
             image='w-full'
           />
           {user.role === "user" && (
@@ -43,7 +44,7 @@ const SmallSidebar = () => {
             <PageLink
               url={`/dashboard/all-counts/${user._id}`}
               text='All Counts'
-              icon={<LuTally5 />}
+              icon={<FaLayerGroup />}
             />
           )}
           {/* <PageLink
@@ -69,8 +70,11 @@ const SmallSidebar = () => {
             <PageLink
               url='/dashboard/members'
               text='Membership'
-              icon={<CgCommunity />}
+              icon={<FaPeopleGroup />}
             />
+          )}
+          {user.role === "user" && (
+            <PageLink url='/dashboard/ten' text='TENs' icon={<GrGroup />} />
           )}
           <PageLink
             url={`/dashboard/profile/${user._id}`}

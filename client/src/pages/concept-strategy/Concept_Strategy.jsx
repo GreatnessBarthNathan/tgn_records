@@ -19,7 +19,9 @@ function Concept_Strategy() {
 
   return (
     <main className='w-full p-1 md:p-5 lg:p-10'>
-      <h1 className='text-sm lg:text-3xl mb-5 font-bold'>Concept&Strategy</h1>
+      <h1 className='text-sm lg:text-3xl mb-5 font-bold'>
+        Concept And Strategy Page
+      </h1>
       {allCS.length < 1 ? (
         <h1 className='mt-5'>No record found</h1>
       ) : (
@@ -34,7 +36,7 @@ function Concept_Strategy() {
             </Link>
           </div>
           {/* TABLE HEAD */}
-          <div className='mt-2 grid grid-cols-9 sticky top-0 border border-white border-b-slate-600 border-t-slate-600 p-1 md:p-2 font-bold bg-white text-[8px] md:text-xs lg:text-base'>
+          <div className='mt-2 grid grid-cols-9 sticky top-0 border border-white border-b-slate-600 border-t-slate-600 p-1 md:p-2 font-semibold bg-white text-[8px] md:text-xs lg:text-base'>
             <h2 className='col-span-2 p-1 md:p-2 text-left'>Name</h2>
             <h2 className='col-span-2 p-1 md:p-2 text-left'>TEN</h2>
             <h2 className='col-span-3 p-1 md:p-2 text-left'>Suggestion</h2>

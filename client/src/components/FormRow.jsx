@@ -14,8 +14,11 @@ const FormRow = ({
   readOnly,
 }) => {
   return (
-    <div className='w-full mb-2 mt-2'>
-      <label htmlFor={name} className='capitalize block'>
+    <div className='w-full mt-1 mb-1'>
+      <label
+        htmlFor={name}
+        className='capitalize block text-slate-500 font-semibold'
+      >
         {labelText || name}
       </label>
       <input

@@ -6,6 +6,7 @@ const TENSchema = new mongoose.Schema({
   leader: String,
   assistant: String,
   VIP: String,
+  venue: String,
 })
 
 export default mongoose.model("TEN", TENSchema)

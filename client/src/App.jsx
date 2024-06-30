@@ -21,6 +21,12 @@ import {
   CreateConcept_Strategy,
   Members,
   SingleConcept_Strategy,
+  AddMember,
+  SingleMember,
+  EditMember,
+  TEN,
+  CreateTEN,
+  EditTEN,
 } from "./pages"
 
 // actions
@@ -31,10 +37,11 @@ import { action as editCountAction } from "./pages/count/EditCount"
 import { action as forgotPasswordAction } from "./pages/ForgotPassword"
 import { action as profileAction } from "./pages/Profile"
 import { action as createCSAction } from "./pages/concept-strategy/CreateConcept_Strategy"
+import { action as createTENaction } from "./pages/ten/CreateTEN"
+import { action as editTENaction } from "./pages/ten/EditTEN"
 
 // loaders
 import { loader as dashboardLoader } from "./pages/DashboardLayout"
-import { loader as allCountsLoader } from "./pages/count/AllCounts"
 import { loader as rcsCountsLoader } from "./pages/count/RcsCounts"
 import { loader as editCountLoader } from "./pages/count/EditCount"
 import { loader as deleteCountLoader } from "./pages/count/DeleteCount"
@@ -82,7 +89,6 @@ const router = createBrowserRouter([
       {
         path: "all-counts/:id",
         element: <AllCounts />,
-        loader: allCountsLoader,
       },
       {
         path: "add-finance",
@@ -127,6 +133,32 @@ const router = createBrowserRouter([
       {
         path: "members",
         element: <Members />,
+      },
+      {
+        path: "single-member/:id",
+        element: <SingleMember />,
+      },
+      {
+        path: "edit-member/:id",
+        element: <EditMember />,
+      },
+      {
+        path: "add-member",
+        element: <AddMember />,
+      },
+      {
+        path: "ten",
+        element: <TEN />,
+      },
+      {
+        path: "create-ten",
+        element: <CreateTEN />,
+        action: createTENaction,
+      },
+      {
+        path: "edit-ten/:id",
+        element: <EditTEN />,
+        action: editTENaction,
       },
       {
         path: "profile/:id",

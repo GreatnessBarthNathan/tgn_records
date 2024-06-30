@@ -2,15 +2,8 @@ import { useAllCountsContext } from "../../pages/count/AllCounts"
 import SingleCount from "./SingleCount"
 
 const CountsContainer = () => {
-  const {
-    allCounts,
-    accOwner,
-    approvedCounts,
-    paginatedArray,
-    page,
-    noOfPages,
-  } = useAllCountsContext()
-  // console.log(allCounts)
+  const { allCounts, accOwner, paginatedArray, page, counts } =
+    useAllCountsContext()
   if (allCounts?.length === 0) {
     return (
       <div>
@@ -31,16 +24,15 @@ const CountsContainer = () => {
       </h1>
       <h2 className='my-5 text-slate-800 text-2xl'>
         {paginatedArray.length > 1
-          ? `Page ${page + 1} of ${noOfPages}`
-          : `${approvedCounts.length} record${
-              approvedCounts.length > 1 && "s"
-            }`}
+          ? `Page ${page + 1} of ${paginatedArray.length}`
+          : `${counts.length} record${counts.length > 1 ? "s" : ""}`}
       </h2>
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-        {allCounts.map((count) => {
-          return <SingleCount key={count._id} {...count} />
-        })}
+        {allCounts &&
+          allCounts.map((count) => {
+            return <SingleCount key={count._id} {...count} />
+          })}
       </div>
     </div>
   )

@@ -71,13 +71,13 @@ const Profile = () => {
             extraStyle='capitalize'
             required
           />
-          <FormRow
+          {/* <FormRow
             type='email'
             name='email'
             labelText='email'
             defaultValue={user.email}
             required
-          />
+          /> */}
 
           <button
             type='submit'

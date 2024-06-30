@@ -60,7 +60,7 @@ const SingleCount = ({
           <span> males - {new Intl.NumberFormat().format(males)}</span>
         </p>
         <p className='flex items-center space-x-2 my-1 text-xs md:text-base capitalize'>
-          <span>{<PiBaby />}</span>
+          <span>{<FaChildren />}</span>
           <span>
             first timers - {new Intl.NumberFormat().format(firstTimers)}
           </span>
@@ -75,7 +75,7 @@ const SingleCount = ({
           <span>r.converts - {new Intl.NumberFormat().format(converts)}</span>
         </p>
         <p className='flex items-center space-x-2 my-1 text-xs md:text-base capitalize'>
-          <span>{<FaChildren />}</span>
+          <span>{<PiBaby />}</span>
           <span>children - {new Intl.NumberFormat().format(children)}</span>
         </p>
       </div>

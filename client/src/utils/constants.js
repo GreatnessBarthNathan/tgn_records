@@ -22,6 +22,7 @@ export const ROYAL_CHAPTER = {
   IBADAN: "IBADAN",
   CALABAR: "CALABAR",
   KANO: "KANO",
+  North_America: "North America",
 }
 
 export const MEETING_TYPE = {
@@ -31,6 +32,7 @@ export const MEETING_TYPE = {
   CONSECRATION: "CONSECRATION",
   TGP: "TGP",
   PROGRAM: "VISION PLS+S",
+  DOP: "3DOP",
 }
 
 export const meetingType = {
@@ -41,6 +43,7 @@ export const meetingType = {
   CONSECRATION: "CONSECRATION",
   TGP: "TGP",
   PROGRAM: "VISION PLS+S",
+  DOP: "3DOP",
 }
 
 export const months = [
@@ -59,3 +62,32 @@ export const months = [
 ]
 
 export const days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
+
+export const titles = {
+  Bishop: "Bishop",
+  Pst: "Pst.",
+  Bro: "Bro.",
+  Sis: "Sis.",
+}
+
+export const sex = {
+  MALE: "MALE",
+  FEMALE: "FEMALE",
+}
+
+export const role = {
+  TEN_leader: "TEN Leader",
+  Assistant_TEN_leader: "Assistant TEN Leader",
+  Partner: "Partner",
+  Group_head: "Group Head",
+  VIP: "VIP",
+  RC_head: "RC Head",
+  FFM: "FFM",
+}
+
+export const category = {
+  LEC: "LEC",
+  CEC: "CEC",
+  GEC: "GEC",
+  Citizen: "Citizen",
+}

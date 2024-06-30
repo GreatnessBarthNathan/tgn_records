@@ -1,53 +1,71 @@
 import { useState, useContext, createContext, useEffect } from "react"
 import customFetch from "../../utils/customFetch"
-import { useLoaderData } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { CountsContainer, FormRow, FormSelect } from "../../components"
 import { meetingType } from "../../utils/constants"
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
+import { Loading } from "../../components"
 
 const AllCountsContext = createContext()
 
-export const loader = async ({ params }) => {
-  try {
-    // get counts
-    const {
-      data: { counts },
-    } = await customFetch.get(`/count/all-counts/${params.id}`)
+const AllCounts = () => {
+  const [loading, setLoading] = useState(false)
+  const [accOwner, setAccOwner] = useState({})
+  const [page, setPage] = useState(0)
+  const [counts, setCounts] = useState([])
+  const [paginatedArray, setPaginatedArray] = useState([])
+  const [allCounts, setAllCounts] = useState([])
+  const { id } = useParams()
 
-    // pagination
+  // fetch counts
+  const fetchCounts = async () => {
+    try {
+      const {
+        data: { counts },
+      } = await customFetch.get(`/count/all-counts/${id}`)
+      setCounts(counts)
+      return counts
+    } catch (error) {
+      return error
+    }
+  }
+
+  // pagination
+  const paginate = (countsArray) => {
     const itemsPerPage = 20
-    const pages = Math.ceil(counts.length / itemsPerPage)
+    const pages = Math.ceil(countsArray.length / itemsPerPage)
     const newArray = Array.from({ length: pages }, (_, index) => {
       const start = index * itemsPerPage
-      const pagination = counts.slice(start, start + itemsPerPage)
+      const pagination = countsArray.slice(start, start + itemsPerPage)
       return pagination
     })
-    // get single user
+    return newArray
+  }
+
+  // getCounts
+  const getCounts = async () => {
+    setLoading(true)
     const {
       data: { user },
-    } = await customFetch.get(`/user/${params.id}`)
-    return { counts, user, newArray }
-  } catch (error) {
-    return error
-  }
-}
+    } = await customFetch.get(`/user/${id}`)
+    setAccOwner(user)
 
-const AllCounts = () => {
-  const { user: accOwner, newArray, counts } = useLoaderData()
-  const [page, setPage] = useState(0)
-  const [newCounts, setNewCounts] = useState(counts)
-  const [approvedCounts, setApprovedCounts] = useState(newCounts)
-  const [paginatedArray, setPaginatedArray] = useState(newArray)
-  const [allCounts, setAllCounts] = useState(paginatedArray[page])
-  const [noOfPages] = useState(Math.ceil(approvedCounts.length / 20))
+    const counts = await fetchCounts()
+
+    const pagination = paginate(counts)
+
+    setPaginatedArray(pagination)
+    setAllCounts(pagination[page])
+    setLoading(false)
+  }
 
   // handle submit
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     setPage(0)
     const formData = new FormData(e.currentTarget)
     const { meetingType, from, to } = Object.fromEntries(formData)
-
     const url = `/count/all-counts/${accOwner._id}?meetingType=${meetingType}&from=${from}&to=${to}`
     try {
       const {
@@ -55,26 +73,25 @@ const AllCounts = () => {
       } = await customFetch.get(url)
 
       // pagination
-      const itemsPerPage = 20
-      const pages = Math.ceil(counts.length / itemsPerPage)
-      const newArray = Array.from({ length: pages }, (_, index) => {
-        const start = index * itemsPerPage
-        const pagination = counts.slice(start, start + itemsPerPage)
-        return pagination
-      })
-      setNewCounts(counts)
-      setPaginatedArray(newArray)
+      const pagination = paginate(counts)
+
+      setPaginatedArray(pagination)
+      setAllCounts(pagination[0])
+      setCounts(counts)
+      setLoading(false)
     } catch (error) {
       console.log(error)
+      setLoading(false)
     }
   }
-
   // next page
   const nextPage = () => {
     if (page === paginatedArray.length - 1) {
-      setPage(newArray.length - 1)
+      setPage(paginatedArray.length - 1)
+      setAllCounts(paginatedArray[paginatedArray.length - 1])
     } else {
       setPage(page + 1)
+      setAllCounts(paginatedArray[page + 1])
     }
   }
 
@@ -82,7 +99,9 @@ const AllCounts = () => {
   const previousPage = () => {
     if (page === 0) {
       setPage(0)
+      setAllCounts(paginatedArray[0])
     } else {
+      setAllCounts(paginatedArray[page - 1])
       setPage(page - 1)
     }
   }
@@ -90,19 +109,14 @@ const AllCounts = () => {
   const values = {
     allCounts,
     accOwner,
-    approvedCounts,
     page,
-    noOfPages,
     paginatedArray,
+    counts,
   }
-  useEffect(() => {
-    const intervalID = setInterval(() => {
-      setApprovedCounts(newCounts)
-      setAllCounts(paginatedArray[page])
-    }, 200)
 
-    return () => clearInterval(intervalID)
-  })
+  useEffect(() => {
+    getCounts()
+  }, [])
   return (
     <AllCountsContext.Provider value={values}>
       {/* wrapper */}
@@ -132,42 +146,47 @@ const AllCounts = () => {
           </form>
         </div>
 
-        {/* counts */}
-        <CountsContainer />
-
-        {/* PAGINATION */}
-        {paginatedArray.length > 1 && (
-          <div className='mt-5 flex justify-between items-center text-xs md:text-sm lg:text-base'>
-            <div className='flex items-center space-x-3'>
-              <button
-                className={`${
-                  page === 0
-                    ? "bg-[whitesmoke] text-black border-2 border-slate-200"
-                    : "bg-indigo-500"
-                } px-3 py-2 rounded text-white`}
-                onClick={previousPage}
-              >
-                <FaAngleLeft />
-              </button>
-              <span className='text-indigo-500'>Previous</span>
-            </div>
-            <p className='text-[8px] md:text-xs lg:text-base'>
-              Page {page + 1} of {noOfPages}
-            </p>
-            <div className='flex items-center justify-center space-x-3'>
-              <span className='text-indigo-500'>Next</span>
-              <button
-                className={`${
-                  page === paginatedArray.length - 1
-                    ? "bg-[whitesmoke] text-black border-2 border-slate-200"
-                    : "bg-indigo-500"
-                } px-3 py-2 rounded text-white`}
-                onClick={nextPage}
-              >
-                <FaAngleRight />
-              </button>
-            </div>
-          </div>
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            {/* counts */}
+            <CountsContainer />
+            {/* PAGINATION */}
+            {paginatedArray.length > 1 && (
+              <div className='mt-5 flex justify-between items-center text-xs md:text-sm lg:text-base'>
+                <div className='flex items-center space-x-3'>
+                  <button
+                    className={`${
+                      page === 0
+                        ? "bg-[whitesmoke] text-black border-2 border-slate-200"
+                        : "bg-indigo-500"
+                    } px-3 py-2 rounded text-white`}
+                    onClick={previousPage}
+                  >
+                    <FaAngleLeft />
+                  </button>
+                  <span className='text-indigo-500'>Previous</span>
+                </div>
+                <p className='text-[8px] md:text-xs lg:text-base'>
+                  Page {page + 1} of {paginatedArray.length}
+                </p>
+                <div className='flex items-center justify-center space-x-3'>
+                  <span className='text-indigo-500'>Next</span>
+                  <button
+                    className={`${
+                      page === paginatedArray.length - 1
+                        ? "bg-[whitesmoke] text-black border-2 border-slate-200"
+                        : "bg-indigo-500"
+                    } px-3 py-2 rounded text-white`}
+                    onClick={nextPage}
+                  >
+                    <FaAngleRight />
+                  </button>
+                </div>
+              </div>
+            )}
+          </>
         )}
       </div>
     </AllCountsContext.Provider>

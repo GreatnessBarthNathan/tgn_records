@@ -19,8 +19,7 @@ export const createMember = async (req, res) => {
 }
 
 export const getAllMembers = async (req, res) => {
-  const user = await User.findOne({ _id: req.user.userId })
-  const members = await Member.find({ royalChapter: user.royalChapter })
+  const members = await Member.find({}).sort({ firstName: 1 })
 
   res.status(StatusCodes.OK).json({ count: members.length, members })
 }
@@ -46,6 +45,7 @@ export const updateMember = async (req, res) => {
     _id: req.params.id,
     royalChapter: user.royalChapter,
   })
+
   if (!member) throw new NotFoundError(`No member with id: ${req.params.id}`)
 
   await Member.findByIdAndUpdate(

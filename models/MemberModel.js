@@ -5,6 +5,7 @@ const MemberSchema = new mongoose.Schema({
   lastName: String,
   middleName: String,
   phoneNumber: String,
+  title: String,
   email: String,
   sex: {
     type: String,

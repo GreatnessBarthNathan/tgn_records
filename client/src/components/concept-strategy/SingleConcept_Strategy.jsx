@@ -13,7 +13,7 @@ function SingleConcept_Strategy({ _id, name, TEN, suggestion, createdAt }) {
         {suggestion.slice(0, 30)}...
       </p>
       <p className='col-span-2 p-1 md:p-2 text-left'>
-        {createdAt.slice(0, 10)}
+        {createdAt.slice(0, 10).split("-").reverse().join("/")}
       </p>
     </Link>
   )

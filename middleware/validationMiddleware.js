@@ -111,6 +111,7 @@ export const validateTenInput = withValidationErrors([
   body("leader").notEmpty().withMessage("leader is required"),
   body("assistant").notEmpty().withMessage("assistant is required"),
   body("VIP").notEmpty().withMessage("VIP is required"),
+  body("venue").notEmpty().withMessage("venue is required"),
 ])
 
 // MEMBER VALIDATION
@@ -119,6 +120,7 @@ export const validateMemberInput = withValidationErrors([
   body("lastName").notEmpty().withMessage("last name is required"),
   body("middleName").notEmpty().withMessage("middle name is required"),
   body("phoneNumber").notEmpty().withMessage("phone number is required"),
+  body("title").notEmpty().withMessage("title is required"),
   body("email").notEmpty().withMessage("email is required"),
   body("sex").notEmpty().withMessage("sex is required"),
   body("DOB").notEmpty().withMessage("DOB is required"),

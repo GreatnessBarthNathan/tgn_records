@@ -1,6 +1,6 @@
 import customFetch from "../../utils/customFetch"
 import { toast } from "react-toastify"
-import { redirect, useLoaderData, useNavigate } from "react-router-dom"
+import { Link, redirect, useLoaderData, useNavigate } from "react-router-dom"
 
 export const loader = async ({ params }) => {
   try {
@@ -64,13 +64,23 @@ function SingleConcept_Strategy() {
 
       {/* SUGGESTION */}
       <div className='mt-4 text-[8px] md:text-xs lg:text-base'>
-        <p className=' bg-white rounded p-2'>{cs.suggestion}</p>
-        <button
-          className='mt-2 p-1 bg-red-500 text-white hover:bg-red-800 ease-in-out duration-300 rounded'
-          onClick={deleteCS}
-        >
-          Discard
-        </button>
+        <p className=' bg-white rounded p-2 leading-4 md:leading-6 lg:leading-8 shadow-md'>
+          {cs.suggestion}
+        </p>
+        <div className='mt-3 flex justify-between items-center bg-blue-50 h-[25px] md:h-[35px]'>
+          <button
+            className='py-1 px-4 bg-red-500 text-white hover:bg-red-800 ease-in-out duration-300 rounded'
+            onClick={deleteCS}
+          >
+            Discard
+          </button>
+          <Link
+            className='mt-2 py-2 px-4 text-red-500 hover:text-red-800 font-semibold ease-in-out duration-300 rounded'
+            to='../concept_strategy'
+          >
+            Go back
+          </Link>
+        </div>
       </div>
     </main>
   )

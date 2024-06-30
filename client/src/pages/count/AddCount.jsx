@@ -117,6 +117,7 @@ const AddCount = () => {
             labelText='retained converts'
             required
             value={inputs.converts}
+            readOnly
           />
 
           <FormRow
@@ -125,7 +126,7 @@ const AddCount = () => {
             labelText='total count'
             required
             value={inputs.totalCount}
-            // onChange={() => setInputs({ ...inputs })}
+            readOnly
           />
 
           <button

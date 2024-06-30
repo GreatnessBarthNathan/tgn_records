@@ -20,7 +20,7 @@ const Landing = () => {
             especially when you think of the target of 6.2 Billion souls, then
             by the Spirit, you find that your mind will regularly be devising
             strategies.
-            <p className='mt-5'>- RPN</p>
+            <span className='mt-5 block'>- RPN</span>
           </p>
           <div className='mt-10'>
             <Link
