@@ -22,7 +22,7 @@ export const getAllUsers = async (req, res) => {
 }
 
 export const getSingleUser = async (req, res) => {
-  const isValidId = await mongoose.Types.ObjectId.isValid(req.params.id)
+  const isValidId = mongoose.Types.ObjectId.isValid(req.params.id)
   if (!isValidId) throw new BadRequestError("not a valid mongoose id")
 
   const user = await User.findOne({ _id: req.params.id }).select(
@@ -39,7 +39,7 @@ export const getCurrentUser = async (req, res) => {
 }
 
 export const updateUser = async (req, res) => {
-  const isValidId = await mongoose.Types.ObjectId.isValid(req.params.id)
+  const isValidId = mongoose.Types.ObjectId.isValid(req.params.id)
   if (!isValidId) throw new BadRequestError("not a valid mongoose id")
 
   const user = await User.findOne({ _id: req.params.id })
@@ -50,14 +50,13 @@ export const updateUser = async (req, res) => {
 }
 
 export const deleteUser = async (req, res) => {
-  const isValidId = await mongoose.Types.ObjectId.isValid(req.params.id)
+  const isValidId = mongoose.Types.ObjectId.isValid(req.params.id)
   if (!isValidId) throw new BadRequestError("not a valid mongoose id")
 
   const user = await User.findOne({ _id: req.params.id })
   if (!user) throw new NotFoundError(`no user with id: ${req.params.id}`)
 
   const isAdmin = req.user.role === "admin"
-  console.log(isAdmin)
   if (!isAdmin)
     throw new UnAuthorizedError("not permitted to carryout this operation")
 

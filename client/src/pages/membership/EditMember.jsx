@@ -38,7 +38,7 @@ const EditMember = () => {
     try {
       const members = await fetchMembers()
       const member = members.find((member) => member._id === id)
-      setMember({ ...member })
+      setMember({ ...member, DOB: member.DOB.slice(0, 10) })
 
       const tens = await fetchTENs()
       const tenNames = tens.map((ten) => ten.name)
