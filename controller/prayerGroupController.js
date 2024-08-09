@@ -1,7 +1,7 @@
 import dayjs from "dayjs"
 import GroupRecord from "../models/PrayerGroupModel.js"
 import { StatusCodes } from "http-status-codes"
-import { BadRequestError } from "../errors/customErrors.js"
+import { BadRequestError, NotFoundError } from "../errors/customErrors.js"
 
 export const createNewRecord = async (req, res) => {
   const enteredAt = dayjs(new Date(Date.now())).format("YYYY-MM-DD")
@@ -20,6 +20,23 @@ export const allGroupRecords = async (req, res) => {
   res.status(StatusCodes.OK).json({ groupRecords })
 }
 
-export const updateRecord = async (req, res) => {}
+export const singleGroupRecord = async (req, res) => {
+  const groupRecord = await GroupRecord.findOne({ _id: req.params.id })
+  if (!groupRecord)
+    throw new NotFoundError(`No record found for id: ${req.params.id}`)
+  res.status(StatusCodes.OK).json({ groupRecord })
+}
+
+export const updateGroupRecord = async (req, res) => {
+  const groupRecord = await GroupRecord.findOne({ _id: req.params.id })
+  if (!groupRecord)
+    throw new NotFoundError(`No record found for id: ${req.params.id}`)
+  await GroupRecord.findOneAndUpdate(
+    { _id: req.params.id },
+    { ...req.body },
+    { runValidators: true, new: true }
+  )
+  res.status(StatusCodes.OK).json({ msg: "record updated" })
+}
 
 export const deleteRecord = async (req, res) => {}

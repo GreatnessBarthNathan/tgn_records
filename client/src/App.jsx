@@ -28,6 +28,8 @@ import {
   CreateTEN,
   EditTEN,
   PrayerGroup,
+  CreateGroupRecord,
+  UpdateGroupRecord,
 } from "./pages"
 
 // actions
@@ -49,6 +51,7 @@ import { loader as deleteCountLoader } from "./pages/count/DeleteCount"
 import { loader as concept_strategyLoader } from "./pages/concept-strategy/Concept_Strategy"
 import { loader as createCSLoader } from "./pages/concept-strategy/CreateConcept_Strategy"
 import { loader as singleCSLoader } from "./pages/concept-strategy/SingleConcept_Strategy"
+import { loader as updateGroupRecordLoader } from "./pages/prayer-group/UpdateGroupRecord"
 
 const router = createBrowserRouter([
   {
@@ -169,6 +172,15 @@ const router = createBrowserRouter([
       {
         path: "prayer-group",
         element: <PrayerGroup />,
+      },
+      {
+        path: "creategrouprecord",
+        element: <CreateGroupRecord />,
+      },
+      {
+        path: "updategrouprecord/:id",
+        element: <UpdateGroupRecord />,
+        loader: updateGroupRecordLoader,
       },
       {
         path: "settings/:id",

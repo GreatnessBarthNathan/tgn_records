@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react"
-import EnterRecordForm from "../../components/prayer-group/EnterRecordForm"
 import { SingleGroupRecord } from "../../components"
 import { useDashboardContext } from "../DashboardLayout"
 import dayjs from "dayjs"
 import { CiFilter } from "react-icons/ci"
+import { Link } from "react-router-dom"
 
 function PrayerGroup() {
+  const { submitting } = useDashboardContext()
   const { fetchGroupRecords } = useDashboardContext()
   const [allGroupRecords, setAllGroupRecords] = useState([])
   const [groupRecords, setGroupRecords] = useState([])
   const [loading, setLoading] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
   const [date, setDate] = useState("")
+  const [totals, setTotals] = useState({})
 
   const getGroupRecords = async () => {
     setLoading(true)
@@ -51,6 +52,17 @@ function PrayerGroup() {
     setGroupRecords(groupRecords)
   }
 
+  const calculateTotals = () => {
+    const totals = groupRecords.reduce(
+      (total, value) => {
+        total.expected += value.expectedCount
+        total.actual += value.actualCount
+        return total
+      },
+      { expected: 0, actual: 0 }
+    )
+    setTotals(totals)
+  }
   useEffect(() => {
     getGroupRecords()
   }, [submitting])
@@ -58,20 +70,26 @@ function PrayerGroup() {
   useEffect(() => {
     getTodayRecords()
   }, [loading])
+
+  useEffect(() => {
+    calculateTotals()
+  }, [groupRecords])
   return (
     <main className='p-2 lg:p-10'>
-      <h1 className='text-2xl mb-5 font-semibold'>Prayer Group Records</h1>
-
-      {/* RECORD FORM */}
-      <EnterRecordForm
-        setGroupRecords={setGroupRecords}
-        groupRecords={groupRecords}
-        submitting={submitting}
-        setSubmitting={setSubmitting}
-      />
+      <h1 className='text-base md:text-2xl mb-5 font-semibold'>
+        Prayer Group Records
+      </h1>
 
       {/* GROUP RECORDS */}
-      <section className='mt-10'>
+      <section className='mt-5 lg:mt-10'>
+        <div className='text-right mb-2'>
+          <Link
+            to='/dashboard/creategrouprecord'
+            className='bg-indigo-500 rounded-md p-1 text-white text-xs md:text-base'
+          >
+            New Record
+          </Link>
+        </div>
         <div className='mb-1 flex justify-between'>
           <h2 className='font-semibold text-xs md:text-base'>{date}</h2>
           <form
@@ -117,11 +135,31 @@ function PrayerGroup() {
         ) : (
           <div>
             {groupRecords.map((record) => (
-              <SingleGroupRecord key={record.leader} {...record} />
+              <SingleGroupRecord key={record._id} {...record} />
             ))}
           </div>
         )}
       </section>
+
+      <div className='bg-white hover:bg-indigo-100 w-[200px]  mt-5'>
+        <h2 className='border p-1 text-center text-xs md:text-base'>Total</h2>
+        <h2 className='grid border grid-cols-2 capitalize'>
+          <span className='p-1 text-[10px] border-r md:text-sm lg:text-base'>
+            Expected
+          </span>
+          <span className='text-center text-[10px] p-1 md:text-sm lg:text-base'>
+            {new Intl.NumberFormat().format(totals?.expected)}
+          </span>
+        </h2>
+        <h2 className='grid border grid-cols-2 capitalize'>
+          <span className=' p-1 text-[10px] border-r md:text-sm lg:text-base'>
+            Actual
+          </span>
+          <span className='text-center text-[10px] p-1 md:text-sm lg:text-base'>
+            {new Intl.NumberFormat().format(totals?.actual)}
+          </span>
+        </h2>
+      </div>
     </main>
   )
 }

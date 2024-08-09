@@ -34,6 +34,7 @@ const DashboardLayout = () => {
   const [showSmallSidebar, setShowSmallSidebar] = useState(false)
   const navigate = useNavigate()
   const navigation = useNavigation()
+  const [submitting, setSubmitting] = useState(false)
 
   const isLoading = navigation.state === "loading"
 
@@ -95,6 +96,8 @@ const DashboardLayout = () => {
     fetchTENs,
     fetchGroupRecords,
     logout,
+    submitting,
+    setSubmitting,
   }
   return (
     <DashboardContext.Provider value={values}>
