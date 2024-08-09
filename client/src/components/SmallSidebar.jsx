@@ -13,7 +13,7 @@ import { RiGroup2Fill } from "react-icons/ri"
 const SmallSidebar = () => {
   const { setShowSmallSidebar, user } = useDashboardContext()
   return (
-    <div className='absolute top-0 left-0 w-full h-full m-auto flex items-center justify-center small-sidebar lg:hidden '>
+    <div className='absolute top-0 left-0 w-full h-full m-auto flex items-center justify-center small-sidebar lg:hidden z-20'>
       <div className='w-[95%] h-[95%] bg-white rounded relative overflow-auto'>
         <button
           className='absolute top-[20px] left-[20px] text-2xl text-red-600 '
