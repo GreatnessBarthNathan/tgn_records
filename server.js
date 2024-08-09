@@ -22,6 +22,7 @@ import rcFinanceRouter from "./routes/rcFinanceRoutes.js"
 import tenRouter from "./routes/tenRoutes.js"
 import memberRouter from "./routes/memberRoutes.js"
 import csRouter from "./routes/csRoutes.js"
+import prayerGroupRouter from "./routes/prayerGroupRoutes.js"
 
 const app = express()
 
@@ -43,6 +44,7 @@ app.use(express.json())
 app.use(helmet())
 app.use(mongoSanitize())
 
+app.use("/api/v1/group-record", authenticateUser, prayerGroupRouter)
 app.use("/api/v1/concept_strategy", authenticateUser, csRouter)
 app.use("/api/v1/member", authenticateUser, memberRouter)
 app.use("/api/v1/ten", authenticateUser, tenRouter)

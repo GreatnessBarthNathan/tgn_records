@@ -1,6 +1,8 @@
+// import PhoneInput from "react-phone-input-2"
+import "react-phone-input-2/lib/style.css"
 import { useState, useEffect } from "react"
 import { FormRow, FormSelect } from "../../components"
-import { redirect, useNavigation, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { titles, sex, role, category } from "../../utils/constants"
 import customFetch from "../../utils/customFetch"
 import { toast } from "react-toastify"
@@ -83,6 +85,16 @@ const AddMember = () => {
             maxLength={11}
             extraStyle='capitalize'
           />
+          {/* <div>
+            <label htmlFor='' className='block'>
+              Phone
+            </label>
+            <PhoneInput
+              country='us'
+              className='p-1 '
+              containerClass='phone-input'
+            /> 
+          </div>*/}
           <FormSelect
             name='title'
             list={Object.values(titles).sort()}

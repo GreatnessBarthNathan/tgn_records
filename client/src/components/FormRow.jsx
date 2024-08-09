@@ -12,6 +12,7 @@ const FormRow = ({
   minLength,
   maxLength,
   readOnly,
+  onClick,
 }) => {
   return (
     <div className='w-full mt-1 mb-1'>
@@ -31,6 +32,7 @@ const FormRow = ({
         minLength={minLength}
         maxLength={maxLength}
         readOnly={readOnly}
+        onClick={onClick}
         className={`border border-blue-200 w-full rounded p-2 mt-1 outline-0 ${extraStyle}`}
       />
     </div>

@@ -1,13 +1,14 @@
 import { useDashboardContext } from "../pages/DashboardLayout"
 import PageLink from "./PageLinks"
+import Logo from "./Logo"
 import { TbRelationManyToMany } from "react-icons/tb"
 import { MdGroups, MdSettings } from "react-icons/md"
 import { CgProfile } from "react-icons/cg"
 import { PiStrategy } from "react-icons/pi"
-import Logo from "./Logo"
 import { FaPeopleGroup } from "react-icons/fa6"
 import { FaLayerGroup } from "react-icons/fa"
 import { GrGroup } from "react-icons/gr"
+import { RiGroup2Fill } from "react-icons/ri"
 
 const BigSidebar = () => {
   const { showBigSidebar, user } = useDashboardContext()
@@ -84,6 +85,11 @@ const BigSidebar = () => {
             url={`/dashboard/profile/${user._id}`}
             text='Profile'
             icon={<CgProfile />}
+          />
+          <PageLink
+            url={`/dashboard/prayer-group`}
+            text='Prayer Groups'
+            icon={<RiGroup2Fill />}
           />
           <PageLink
             url={`/dashboard/settings/${user._id}`}

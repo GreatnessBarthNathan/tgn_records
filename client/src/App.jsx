@@ -27,6 +27,7 @@ import {
   TEN,
   CreateTEN,
   EditTEN,
+  PrayerGroup,
 } from "./pages"
 
 // actions
@@ -164,6 +165,10 @@ const router = createBrowserRouter([
         path: "profile/:id",
         element: <Profile />,
         action: profileAction,
+      },
+      {
+        path: "prayer-group",
+        element: <PrayerGroup />,
       },
       {
         path: "settings/:id",

@@ -2,12 +2,13 @@ import { FaLayerGroup, FaTimes } from "react-icons/fa"
 import { FaPeopleGroup } from "react-icons/fa6"
 import { useDashboardContext } from "../pages/DashboardLayout"
 import PageLink from "./PageLinks"
+import Logo from "./Logo"
 import { TbRelationManyToMany } from "react-icons/tb"
 import { MdGroups, MdSettings } from "react-icons/md"
 import { PiStrategy } from "react-icons/pi"
 import { CgProfile } from "react-icons/cg"
 import { GrGroup } from "react-icons/gr"
-import Logo from "./Logo"
+import { RiGroup2Fill } from "react-icons/ri"
 
 const SmallSidebar = () => {
   const { setShowSmallSidebar, user } = useDashboardContext()
@@ -80,6 +81,11 @@ const SmallSidebar = () => {
             url={`/dashboard/profile/${user._id}`}
             text='Profile'
             icon={<CgProfile />}
+          />
+          <PageLink
+            url={`/dashboard/prayer-group`}
+            text='Prayer Groups'
+            icon={<RiGroup2Fill />}
           />
           <PageLink
             url={`/dashboard/settings/${user._id}`}

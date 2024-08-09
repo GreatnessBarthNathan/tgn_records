@@ -137,3 +137,13 @@ export const validateCSInput = withValidationErrors([
   body("TEN").notEmpty().withMessage("TEN is required"),
   body("suggestion").notEmpty().withMessage("suggestion is required"),
 ])
+
+// PRAYER GROUP RECORD
+export const validateGroupInput = withValidationErrors([
+  body("group").notEmpty().withMessage("group is required"),
+  body("leader").notEmpty().withMessage("leader is required"),
+  body("expectedCount").notEmpty().withMessage("expected count is required"),
+  body("actualCount").notEmpty().withMessage("actual count is required"),
+  body("startTime").notEmpty().withMessage("start time is required"),
+  body("endTime").notEmpty().withMessage("end time is required"),
+])

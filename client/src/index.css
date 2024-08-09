@@ -15,6 +15,14 @@ body {
   );
 }
 
+.blured {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.7)
+  );
+}
+
 .active {
   color: rgb(149, 3, 253);
   background: whitesmoke;

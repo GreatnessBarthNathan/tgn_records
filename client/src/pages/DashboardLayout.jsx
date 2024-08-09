@@ -61,6 +61,18 @@ const DashboardLayout = () => {
     }
   }
 
+  // fetch group records
+  const fetchGroupRecords = async () => {
+    try {
+      const {
+        data: { groupRecords },
+      } = await customFetch.get("/group-record")
+      return groupRecords
+    } catch (error) {
+      return error
+    }
+  }
+
   // logout user
   const logout = async () => {
     try {
@@ -81,6 +93,7 @@ const DashboardLayout = () => {
     setShowSmallSidebar,
     fetchMembers,
     fetchTENs,
+    fetchGroupRecords,
     logout,
   }
   return (
