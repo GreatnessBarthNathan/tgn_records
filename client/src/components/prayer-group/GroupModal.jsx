@@ -32,7 +32,7 @@ function GroupModal({ prayerGroup, setPrayerGroup, setShowGroupModal }) {
 
   return (
     <main className='blured fixed top-0 left-0 w-full h-full p-5 md:p-10 flex items-center justify-center'>
-      <section className='w-full md:w-[50%] bg-white h-[60%] overflow-hidden p-5 rounded-md'>
+      <section className='w-full md:w-[50%] bg-white h-[70%] overflow-hidden p-5 rounded-md'>
         <input
           type='text'
           autoFocus
