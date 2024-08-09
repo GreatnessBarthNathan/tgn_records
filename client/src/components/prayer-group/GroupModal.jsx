@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { prayerGroups } from "../../utils/constants"
+import { FaTimes } from "react-icons/fa"
 
 function GroupModal({ prayerGroup, setPrayerGroup, setShowGroupModal }) {
   const [displayedGroup, setDisplayedGroup] = useState(prayerGroups)
@@ -32,7 +33,7 @@ function GroupModal({ prayerGroup, setPrayerGroup, setShowGroupModal }) {
 
   return (
     <main className='blured fixed top-0 left-0 w-full h-full p-5 md:p-10 flex items-center justify-center'>
-      <section className='w-full md:w-[50%] bg-white h-[70%] overflow-hidden p-5 rounded-md'>
+      <section className='w-full md:w-[50%] bg-white h-[70%] overflow-hidden p-5 rounded-md relative'>
         <input
           type='text'
           autoFocus
@@ -53,6 +54,12 @@ function GroupModal({ prayerGroup, setPrayerGroup, setShowGroupModal }) {
             )
           })}
         </div>
+        <button
+          className='absolute top-0 right-0 p-1'
+          onClick={() => setShowGroupModal(false)}
+        >
+          <FaTimes />
+        </button>
       </section>
     </main>
   )
