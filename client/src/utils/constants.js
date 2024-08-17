@@ -96,7 +96,7 @@ export const prayerGroups = [
   {
     group: 1,
     leader: "Bishop Tesla",
-    expectedCount: 24,
+    expectedCount: 27,
   },
   {
     group: 2,
@@ -136,12 +136,12 @@ export const prayerGroups = [
   {
     group: 9,
     leader: "BCN",
-    expectedCount: 26,
+    expectedCount: 27,
   },
   {
     group: 10,
     leader: "Bro Emmanuel Onuoha",
-    expectedCount: 25,
+    expectedCount: 26,
   },
   {
     group: 11,
@@ -151,7 +151,7 @@ export const prayerGroups = [
   {
     group: 12,
     leader: "Bishop Greatness",
-    expectedCount: 16,
+    expectedCount: 17,
   },
   {
     group: 13,
@@ -171,7 +171,7 @@ export const prayerGroups = [
   {
     group: 16,
     leader: "Bishop Harold",
-    expectedCount: 17,
+    expectedCount: 18,
   },
   {
     group: 17,
@@ -216,7 +216,7 @@ export const prayerGroups = [
   {
     group: 25,
     leader: "Bro Chuka Onyekpe",
-    expectedCount: 31,
+    expectedCount: 32,
   },
   {
     group: 26,
@@ -231,7 +231,7 @@ export const prayerGroups = [
   {
     group: 28,
     leader: "Bishop Phil",
-    expectedCount: 30,
+    expectedCount: 32,
   },
   {
     group: 29,
