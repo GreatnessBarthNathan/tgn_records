@@ -3,7 +3,16 @@ import mongoose from "mongoose"
 const CountSchema = new mongoose.Schema({
   meetingType: {
     type: String,
-    enum: ["NCR", "PEM", "TEN", "CONSECRATION", "TGP", "VISION PLS+S", "3DOP"],
+    enum: [
+      "NCR",
+      "PEM",
+      "TEN",
+      "CONSECRATION",
+      "TGP",
+      "VISION PLS+S",
+      "3DOP",
+      "PROGRAM",
+    ],
   },
   totalCount: Number,
   firstTimers: Number,
