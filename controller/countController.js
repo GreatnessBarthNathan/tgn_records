@@ -58,7 +58,7 @@ export const createCount = async (req, res) => {
 }
 
 export const getAllCounts = async (req, res) => {
-  const { meetingType, from, to } = req.query
+  let { meetingType, from, to } = req.query
   const { id } = req.params
 
   if (req.user.userId !== id && req.user.role !== "admin") {
@@ -67,10 +67,14 @@ export const getAllCounts = async (req, res) => {
   const queryObject = {
     user: id,
   }
-
-  if (meetingType && meetingType !== "ALL")
+  if (meetingType && meetingType === "VISION PLS S") {
+    meetingType = "VISION PLS+S"
     queryObject.meetingType = meetingType
+  }
 
+  if (meetingType && meetingType !== "ALL") {
+    queryObject.meetingType = meetingType
+  }
   if (from && to) {
     queryObject.enteredAt = { $gte: from, $lte: to }
   }

@@ -31,7 +31,7 @@ export const MEETING_TYPE = {
   TEN: "TEN",
   CONSECRATION: "CONSECRATION",
   TGP: "TGP",
-  PROGRAM: "VISION PLS+S",
+  PROGRAM: "COV.CONFR",
   DOP: "3DOP",
 }
 
@@ -42,7 +42,7 @@ export const meetingType = {
   TEN: "TEN",
   CONSECRATION: "CONSECRATION",
   TGP: "TGP",
-  PROGRAM: "PROGRAM",
+  PROGRAM: "COV.CONFR",
   DOP: "3DOP",
 }
 

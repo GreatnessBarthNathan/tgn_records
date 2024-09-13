@@ -2,7 +2,7 @@ import { useState, useContext, createContext, useEffect } from "react"
 import customFetch from "../../utils/customFetch"
 import { useParams } from "react-router-dom"
 import { CountsContainer, FormRow, FormSelect } from "../../components"
-import { meetingType } from "../../utils/constants"
+// import { meetingType } from "../../utils/constants"
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
 import { Loading } from "../../components"
 
@@ -16,6 +16,7 @@ const AllCounts = () => {
   const [paginatedArray, setPaginatedArray] = useState([])
   const [allCounts, setAllCounts] = useState([])
   const { id } = useParams()
+  const [meetingType, setMeetingType] = useState([])
 
   // fetch counts
   const fetchCounts = async () => {
@@ -24,6 +25,7 @@ const AllCounts = () => {
         data: { counts },
       } = await customFetch.get(`/count/all-counts/${id}`)
       setCounts(counts)
+      console.log(counts)
       return counts
     } catch (error) {
       return error
@@ -51,7 +53,6 @@ const AllCounts = () => {
     setAccOwner(user)
 
     const counts = await fetchCounts()
-
     const pagination = paginate(counts)
 
     setPaginatedArray(pagination)
@@ -106,6 +107,16 @@ const AllCounts = () => {
     }
   }
 
+  const createMeetingType = async () => {
+    const counts = await fetchCounts()
+    console.log(counts)
+    const meetingType = [
+      "ALL",
+      ...new Set(counts.map((count) => count.meetingType)),
+    ]
+    setMeetingType(meetingType)
+  }
+
   const values = {
     allCounts,
     accOwner,
@@ -116,6 +127,7 @@ const AllCounts = () => {
 
   useEffect(() => {
     getCounts()
+    createMeetingType()
   }, [])
   return (
     <AllCountsContext.Provider value={values}>

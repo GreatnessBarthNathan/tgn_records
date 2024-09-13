@@ -11,7 +11,7 @@ const CountSchema = new mongoose.Schema({
       "TGP",
       "VISION PLS+S",
       "3DOP",
-      "PROGRAM",
+      "COV.CONFR",
     ],
   },
   totalCount: Number,
