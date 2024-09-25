@@ -22,6 +22,7 @@ export const ROYAL_CHAPTER = {
   IBADAN: "IBADAN",
   CALABAR: "CALABAR",
   KANO: "KANO",
+  IKORODU: "IKORODU",
   North_America: "North America",
 }
 
