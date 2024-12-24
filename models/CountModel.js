@@ -12,6 +12,7 @@ const CountSchema = new mongoose.Schema({
       "VISION PLS+S",
       "3DOP",
       "COV.CONFR",
+      "CHRISTMAS",
     ],
   },
   totalCount: Number,

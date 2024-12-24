@@ -34,6 +34,7 @@ export const MEETING_TYPE = {
   TGP: "TGP",
   PROGRAM: "COV.CONFR",
   DOP: "3DOP",
+  CHRISTMAS: "CHRISTMAS",
 }
 
 export const meetingType = {
