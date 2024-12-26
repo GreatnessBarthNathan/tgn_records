@@ -44,7 +44,7 @@ export const meetingType = {
   TEN: "TEN",
   CONSECRATION: "CONSECRATION",
   TGP: "TGP",
-  PROGRAM: "COV.CONFR",
+  PROGRAM: "KEE6",
   DOP: "3DOP",
   EXPECTED: "KEE6.EXPECTED",
 }
