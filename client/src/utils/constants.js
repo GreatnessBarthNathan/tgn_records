@@ -32,9 +32,9 @@ export const MEETING_TYPE = {
   TEN: "TEN",
   CONSECRATION: "CONSECRATION",
   TGP: "TGP",
-  PROGRAM: "KEE6",
+  PROGRAM: "PROGRAM",
   DOP: "3DOP",
-  EXPECTED: "KEE6.EXPECTED",
+  EXPECTED: "EXPECTED",
 }
 
 export const meetingType = {
@@ -44,9 +44,9 @@ export const meetingType = {
   TEN: "TEN",
   CONSECRATION: "CONSECRATION",
   TGP: "TGP",
-  PROGRAM: "KEE6",
+  PROGRAM: "PROGRAM",
   DOP: "3DOP",
-  EXPECTED: "KEE6.EXPECTED",
+  EXPECTED: "EXPECTED",
 }
 
 export const months = [
