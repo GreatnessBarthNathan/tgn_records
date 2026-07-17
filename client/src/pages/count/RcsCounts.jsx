@@ -14,9 +14,6 @@ export const loader = async () => {
     const {
       data: { rcs },
     } = await customFetch.get('/rc')
-    // const {
-    //   data: { users },
-    // } = await customFetch.get('/user')
 
     // get all count records
     const {
@@ -43,7 +40,6 @@ const RcsCounts = () => {
   const year = countDate.getFullYear()
   const [dateObj, setDateObj] = useState({ date, day, month, year })
 
-  // console.log(ids)
   // get user ids
   const getUserId = () => {
     const ids = rcCounts.map((count) => {

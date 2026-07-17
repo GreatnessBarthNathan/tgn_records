@@ -97,16 +97,6 @@ const AllCounts = () => {
     }
   }
 
-  // const createMeetingType = async () => {
-  //   const counts = await fetchCounts()
-
-  //   const meetingType = [
-  //     'ALL',
-  //     ...new Set(counts.map((count) => count.meetingType)),
-  //   ]
-  //   setMeetingType(meetingType)
-  // }
-
   const values = {
     rc,
     page,
@@ -115,7 +105,6 @@ const AllCounts = () => {
 
   useEffect(() => {
     getRC()
-    // createMeetingType()
   }, [])
 
   useEffect(() => {
