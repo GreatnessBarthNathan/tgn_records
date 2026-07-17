@@ -1,14 +1,15 @@
-import { FaLayerGroup, FaTimes } from "react-icons/fa"
-import { FaPeopleGroup } from "react-icons/fa6"
-import { useDashboardContext } from "../pages/DashboardLayout"
-import PageLink from "./PageLinks"
-import Logo from "./Logo"
-import { TbRelationManyToMany } from "react-icons/tb"
-import { MdGroups, MdSettings } from "react-icons/md"
-import { PiStrategy } from "react-icons/pi"
-import { CgProfile } from "react-icons/cg"
-import { GrGroup } from "react-icons/gr"
-import { RiGroup2Fill } from "react-icons/ri"
+import { FaLayerGroup, FaTimes } from 'react-icons/fa'
+import { FaPeopleGroup } from 'react-icons/fa6'
+import { useDashboardContext } from '../pages/DashboardLayout'
+import PageLink from './PageLinks'
+import Logo from './Logo'
+import { TbRelationManyToMany } from 'react-icons/tb'
+import { MdGroups, MdSettings } from 'react-icons/md'
+import { PiStrategy } from 'react-icons/pi'
+import { CgProfile } from 'react-icons/cg'
+import { GrGroup } from 'react-icons/gr'
+import { RiGroup2Fill } from 'react-icons/ri'
+import { LiaCrownSolid } from 'react-icons/lia'
 
 const SmallSidebar = () => {
   const { setShowSmallSidebar, user } = useDashboardContext()
@@ -29,7 +30,7 @@ const SmallSidebar = () => {
             container='w-[30%] m-auto mb-[25px] bg-[whitesmoke] rounded-full border-2 border-indigo-500'
             image='w-full'
           />
-          {user.role === "user" && (
+          {user.role === 'rcHead' && (
             <PageLink
               url='/dashboard/add-count'
               text='Add Count'
@@ -41,7 +42,7 @@ const SmallSidebar = () => {
             text='Add Finances'
             icon={<FaMoneyBill />}
           /> */}
-          {user.role === "user" && (
+          {user.role === 'rcHead' && (
             <PageLink
               url={`/dashboard/all-counts/${user._id}`}
               text='All Counts'
@@ -53,28 +54,28 @@ const SmallSidebar = () => {
             text='All Finances'
             icon={<FaBriefcase />}
           /> */}
-          {user.role === "admin" && (
+          {user.role === 'admin' && (
             <PageLink
               url='/dashboard/rcs-counts'
               text='All RC-Counts'
               icon={<TbRelationManyToMany />}
             />
           )}
-          {user.role === "user" && (
+          {user.role === 'rcHead' && (
             <PageLink
               url='/dashboard/concept_strategy'
               text='Concept&Strategy'
               icon={<PiStrategy />}
             />
           )}
-          {user.role === "user" && (
+          {user.role === 'rcHead' && (
             <PageLink
               url='/dashboard/members'
               text='Membership'
               icon={<FaPeopleGroup />}
             />
           )}
-          {user.role === "user" && (
+          {user.role === 'rcHead' && (
             <PageLink url='/dashboard/ten' text='TENs' icon={<GrGroup />} />
           )}
           <PageLink
@@ -92,6 +93,13 @@ const SmallSidebar = () => {
             text='Settings'
             icon={<MdSettings />}
           />
+          {user.role === 'admin' && (
+            <PageLink
+              url={`/dashboard/rcs`}
+              text='Royal Chapters'
+              icon={<LiaCrownSolid />}
+            />
+          )}
         </div>
       </div>
     </div>

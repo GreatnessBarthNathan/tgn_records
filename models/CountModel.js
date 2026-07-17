@@ -1,17 +1,17 @@
-import mongoose from "mongoose"
+import mongoose from 'mongoose';
 
 const CountSchema = new mongoose.Schema({
   meetingType: {
     type: String,
     enum: [
-      "NCR",
-      "PEM",
-      "TEN",
-      "CONSECRATION",
-      "TGP",
-      "3DOP",
-      "PROGRAM",
-      "EXPECTED",
+      'NCR',
+      'PEM',
+      'TEN',
+      'CONSECRATION',
+      'TGP',
+      '3DOP',
+      'PROGRAM',
+      'EXPECTED',
     ],
   },
   totalCount: Number,
@@ -26,8 +26,12 @@ const CountSchema = new mongoose.Schema({
   editFlag: String,
   user: {
     type: mongoose.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
   },
-})
+  rc: {
+    type: mongoose.Types.ObjectId,
+    ref: 'RC',
+  },
+});
 
-export default mongoose.model("Count", CountSchema)
+export default mongoose.model('Count', CountSchema);

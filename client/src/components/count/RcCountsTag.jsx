@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
-import { useRcsCountsContext } from "../../pages/count/RcsCounts"
-import SingleCountTag from "./SingleCountTag"
+import { useRcsCountsContext } from '../../pages/count/RcsCounts'
+import SingleCountTag from './SingleCountTag'
 
 const RcCountsTag = ({ styling }) => {
-  const { users } = useRcsCountsContext()
+  const { rcs } = useRcsCountsContext()
 
   return (
     <div className={styling}>
-      {users.map((user) => {
-        return <SingleCountTag key={user._id} {...user} />
+      {rcs?.map((rc) => {
+        return <SingleCountTag key={rc._id} {...rc} />
       })}
     </div>
   )

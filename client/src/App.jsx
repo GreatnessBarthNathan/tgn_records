@@ -1,7 +1,7 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 // pages
-import Landing from "./pages/Landing"
+import Landing from './pages/Landing';
 import {
   Register,
   Login,
@@ -30,167 +30,172 @@ import {
   PrayerGroup,
   CreateGroupRecord,
   UpdateGroupRecord,
-} from "./pages"
+  RCs,
+} from './pages';
 
 // actions
-import { action as registerAction } from "./pages/Register"
-import { action as loginAction } from "./pages/Login"
-import { action as addCountAction } from "./pages/count/AddCount"
-import { action as editCountAction } from "./pages/count/EditCount"
-import { action as forgotPasswordAction } from "./pages/ForgotPassword"
-import { action as profileAction } from "./pages/Profile"
-import { action as createCSAction } from "./pages/concept-strategy/CreateConcept_Strategy"
-import { action as createTENaction } from "./pages/ten/CreateTEN"
-import { action as editTENaction } from "./pages/ten/EditTEN"
+import { action as registerAction } from './pages/Register';
+import { action as loginAction } from './pages/Login';
+import { action as addCountAction } from './pages/count/AddCount';
+import { action as editCountAction } from './pages/count/EditCount';
+import { action as forgotPasswordAction } from './pages/ForgotPassword';
+import { action as profileAction } from './pages/Profile';
+import { action as createCSAction } from './pages/concept-strategy/CreateConcept_Strategy';
+import { action as createTENaction } from './pages/ten/CreateTEN';
+import { action as editTENaction } from './pages/ten/EditTEN';
 
 // loaders
-import { loader as dashboardLoader } from "./pages/DashboardLayout"
-import { loader as rcsCountsLoader } from "./pages/count/RcsCounts"
-import { loader as editCountLoader } from "./pages/count/EditCount"
-import { loader as deleteCountLoader } from "./pages/count/DeleteCount"
-import { loader as concept_strategyLoader } from "./pages/concept-strategy/Concept_Strategy"
-import { loader as createCSLoader } from "./pages/concept-strategy/CreateConcept_Strategy"
-import { loader as singleCSLoader } from "./pages/concept-strategy/SingleConcept_Strategy"
-import { loader as updateGroupRecordLoader } from "./pages/prayer-group/UpdateGroupRecord"
+import { loader as dashboardLoader } from './pages/DashboardLayout';
+import { loader as rcsCountsLoader } from './pages/count/RcsCounts';
+import { loader as editCountLoader } from './pages/count/EditCount';
+import { loader as deleteCountLoader } from './pages/count/DeleteCount';
+import { loader as concept_strategyLoader } from './pages/concept-strategy/Concept_Strategy';
+import { loader as createCSLoader } from './pages/concept-strategy/CreateConcept_Strategy';
+import { loader as singleCSLoader } from './pages/concept-strategy/SingleConcept_Strategy';
+import { loader as updateGroupRecordLoader } from './pages/prayer-group/UpdateGroupRecord';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Landing />,
     errorElement: <Error />,
     index: true,
   },
   {
-    path: "/register",
+    path: '/register',
     element: <Register />,
     errorElement: <Error />,
     action: registerAction,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <Login />,
     errorElement: <Error />,
     action: loginAction,
   },
   {
-    path: "/forgot-password",
+    path: '/forgot-password',
     element: <ForgotPassword />,
     errorElement: <Error />,
     action: forgotPasswordAction,
   },
   {
-    path: "/dashboard",
+    path: '/dashboard',
     element: <Dashboard />,
     errorElement: <Error />,
     loader: dashboardLoader,
     children: [
       {
         index: true,
-        path: "add-count",
+        path: 'add-count',
         element: <AddCount />,
         action: addCountAction,
       },
       {
-        path: "all-counts/:id",
+        path: 'all-counts/:id',
         element: <AllCounts />,
       },
       {
-        path: "add-finance",
+        path: 'add-finance',
         element: <AddFinRec />,
       },
       {
-        path: "all-finances",
+        path: 'all-finances',
         element: <AllFinRecs />,
       },
       {
-        path: "rcs-counts",
+        path: 'rcs-counts',
         element: <RcsCounts />,
         loader: rcsCountsLoader,
       },
       {
-        path: "edit-count/:id",
+        path: 'edit-count/:id',
         element: <EditCount />,
         loader: editCountLoader,
         action: editCountAction,
       },
       {
-        path: "delete-count/:id",
+        path: 'delete-count/:id',
         element: <DeleteCount />,
         loader: deleteCountLoader,
       },
       {
-        path: "concept_strategy",
+        path: 'concept_strategy',
         element: <Concept_Strategy />,
         loader: concept_strategyLoader,
       },
       {
-        path: "create-cs",
+        path: 'create-cs',
         element: <CreateConcept_Strategy />,
         loader: createCSLoader,
         action: createCSAction,
       },
       {
-        path: "concept_strategy/:id",
+        path: 'concept_strategy/:id',
         element: <SingleConcept_Strategy />,
         loader: singleCSLoader,
       },
       {
-        path: "members",
+        path: 'members',
         element: <Members />,
       },
       {
-        path: "single-member/:id",
+        path: 'single-member/:id',
         element: <SingleMember />,
       },
       {
-        path: "edit-member/:id",
+        path: 'edit-member/:id',
         element: <EditMember />,
       },
       {
-        path: "add-member",
+        path: 'add-member',
         element: <AddMember />,
       },
       {
-        path: "ten",
+        path: 'ten',
         element: <TEN />,
       },
       {
-        path: "create-ten",
+        path: 'create-ten',
         element: <CreateTEN />,
         action: createTENaction,
       },
       {
-        path: "edit-ten/:id",
+        path: 'edit-ten/:id',
         element: <EditTEN />,
         action: editTENaction,
       },
       {
-        path: "profile/:id",
+        path: 'profile/:id',
         element: <Profile />,
         action: profileAction,
       },
       {
-        path: "prayer-group",
+        path: 'prayer-group',
         element: <PrayerGroup />,
       },
       {
-        path: "creategrouprecord",
+        path: 'creategrouprecord',
         element: <CreateGroupRecord />,
       },
       {
-        path: "updategrouprecord/:id",
+        path: 'updategrouprecord/:id',
         element: <UpdateGroupRecord />,
         loader: updateGroupRecordLoader,
       },
       {
-        path: "settings/:id",
+        path: 'settings/:id',
         element: <Settings />,
+      },
+      {
+        path: 'rcs',
+        element: <RCs />,
       },
     ],
   },
-])
+]);
 
 function App() {
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }
-export default App
+export default App;

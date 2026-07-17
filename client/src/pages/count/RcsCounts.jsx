@@ -1,25 +1,29 @@
-import { useContext, createContext, useState, useEffect } from "react"
-import customFetch from "../../utils/customFetch"
-import { useLoaderData } from "react-router-dom"
-import { RcCountsDetails } from "../../components"
-import { toast } from "react-toastify"
-import { months, days } from "../../utils/constants"
+import { useContext, createContext, useState, useEffect } from 'react'
+import customFetch from '../../utils/customFetch'
+import { useLoaderData } from 'react-router-dom'
+import { RcCountsDetails } from '../../components'
+import { toast } from 'react-toastify'
+import { months, days } from '../../utils/constants'
 
 const RcsCountsContext = createContext()
 
 export const loader = async () => {
   try {
     // get all users
+
     const {
-      data: { users },
-    } = await customFetch.get("/user")
+      data: { rcs },
+    } = await customFetch.get('/rc')
+    // const {
+    //   data: { users },
+    // } = await customFetch.get('/user')
 
     // get all count records
     const {
       data: { counts },
-    } = await customFetch.get("/count/every-count")
+    } = await customFetch.get('/count/every-count')
 
-    return { users, counts }
+    return { rcs, counts }
   } catch (error) {
     console.log(error)
     return error
@@ -27,7 +31,7 @@ export const loader = async () => {
 }
 
 const RcsCounts = () => {
-  const { users, counts } = useLoaderData()
+  const { rcs, counts } = useLoaderData()
   const [ids, setIds] = useState([])
   const [totals, setTotals] = useState({})
   const [rcCounts, setRcCounts] = useState(counts)
@@ -39,10 +43,11 @@ const RcsCounts = () => {
   const year = countDate.getFullYear()
   const [dateObj, setDateObj] = useState({ date, day, month, year })
 
+  // console.log(ids)
   // get user ids
   const getUserId = () => {
     const ids = rcCounts.map((count) => {
-      return count.user
+      return count.rc
     })
     setIds(ids)
   }
@@ -83,7 +88,7 @@ const RcsCounts = () => {
           firstTimers: 0,
           workForce: 0,
           totalCount: 0,
-        }
+        },
       )
     }
   }
@@ -122,7 +127,7 @@ const RcsCounts = () => {
     return () => clearInterval(intervalId)
   })
 
-  const values = { users, rcCounts, ids, totals }
+  const values = { rcs, ids, rcCounts, totals }
   return (
     <RcsCountsContext.Provider value={values}>
       <div className='p-1 lg:p-10 w-full h-full'>
@@ -146,11 +151,10 @@ const RcsCounts = () => {
         </form>
 
         <h1 className='text-right font-semibold text-sm lg:text-2xl text-slate-700 mb-2 pr-3'>
-          {days[dateObj.day]}, {months[dateObj.month]} {dateObj.date},{" "}
+          {days[dateObj.day]}, {months[dateObj.month]} {dateObj.date},{' '}
           {dateObj.year}
         </h1>
         <div className='flex justify-center space-x-2'>
-          {/* <RcCountsTag styling='w-[15%] py-5 px-2 lg:block hidden' /> */}
           <RcCountsDetails />
         </div>
       </div>

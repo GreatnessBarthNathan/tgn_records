@@ -1,17 +1,18 @@
-import { useDashboardContext } from "../pages/DashboardLayout"
-import PageLink from "./PageLinks"
-import Logo from "./Logo"
-import { TbRelationManyToMany } from "react-icons/tb"
-import { MdGroups, MdSettings } from "react-icons/md"
-import { CgProfile } from "react-icons/cg"
-import { PiStrategy } from "react-icons/pi"
-import { FaPeopleGroup } from "react-icons/fa6"
-import { FaLayerGroup } from "react-icons/fa"
-import { GrGroup } from "react-icons/gr"
-import { RiGroup2Fill } from "react-icons/ri"
+import { useDashboardContext } from '../pages/DashboardLayout';
+import PageLink from './PageLinks';
+import Logo from './Logo';
+import { TbRelationManyToMany } from 'react-icons/tb';
+import { MdGroups, MdSettings } from 'react-icons/md';
+import { CgProfile } from 'react-icons/cg';
+import { PiStrategy } from 'react-icons/pi';
+import { FaPeopleGroup } from 'react-icons/fa6';
+import { FaLayerGroup } from 'react-icons/fa';
+import { GrGroup } from 'react-icons/gr';
+import { RiGroup2Fill } from 'react-icons/ri';
+import { LiaCrownSolid } from 'react-icons/lia';
 
 const BigSidebar = () => {
-  const { showBigSidebar, user } = useDashboardContext()
+  const { showBigSidebar, user } = useDashboardContext();
 
   return (
     // wrapper
@@ -19,8 +20,8 @@ const BigSidebar = () => {
       className={`
      hidden lg:block bg-white ${
        showBigSidebar
-         ? "w-[20%] translate-x-0 opacity-1 h-full"
-         : "w-[0px] translate-x-[-100%] opacity-0 h-0"
+         ? 'w-[20%] translate-x-0 opacity-1 h-full'
+         : 'w-[0px] translate-x-[-100%] opacity-0 h-0'
      } ease-in-out duration-300
       `}
     >
@@ -33,7 +34,7 @@ const BigSidebar = () => {
         />
         {/* links */}
         <div>
-          {user.role === "user" && (
+          {user.role === 'rcHead' && (
             <PageLink
               url='/dashboard/add-count'
               text='Add Count'
@@ -45,7 +46,7 @@ const BigSidebar = () => {
             text='Add Finances'
             icon={<FaMoneyBill />}
           /> */}
-          {user.role === "user" && (
+          {user.role === 'rcHead' && (
             <PageLink
               url={`/dashboard/all-counts/${user._id}`}
               text='All Counts'
@@ -57,28 +58,28 @@ const BigSidebar = () => {
             text='All Finances'
             icon={<FaBriefcase />}
           /> */}
-          {user.role === "admin" && (
+          {user.role === 'admin' && (
             <PageLink
               url='/dashboard/rcs-counts'
               text='All RC-Counts'
               icon={<TbRelationManyToMany />}
             />
           )}
-          {user.role === "user" && (
+          {user.role === 'rcHead' && (
             <PageLink
               url='/dashboard/concept_strategy'
               text='Concept&Strategy'
               icon={<PiStrategy />}
             />
           )}
-          {user.role === "user" && (
+          {user.role === 'rcHead' && (
             <PageLink
               url='/dashboard/members'
               text='Membership'
               icon={<FaPeopleGroup />}
             />
           )}
-          {user.role === "user" && (
+          {user.role === 'rcHead' && (
             <PageLink url='/dashboard/ten' text='TENs' icon={<GrGroup />} />
           )}
           <PageLink
@@ -96,10 +97,17 @@ const BigSidebar = () => {
             text='Settings'
             icon={<MdSettings />}
           />
+          {user.role === 'admin' && (
+            <PageLink
+              url={`/dashboard/rcs`}
+              text='Royal Chapters'
+              icon={<LiaCrownSolid />}
+            />
+          )}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BigSidebar
+export default BigSidebar;

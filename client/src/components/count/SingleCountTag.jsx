@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useRcsCountsContext } from "../../pages/count/RcsCounts"
-import { FaCheck } from "react-icons/fa6"
-import { Link } from "react-router-dom"
+import { useRcsCountsContext } from '../../pages/count/RcsCounts'
+import { FaCheck } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
 
-const SingleCountTag = ({ _id, royalChapter }) => {
+const SingleCountTag = ({ _id, name, handler }) => {
   const { ids } = useRcsCountsContext()
 
   return (
@@ -13,30 +13,28 @@ const SingleCountTag = ({ _id, royalChapter }) => {
     >
       <div
         className={` w-[10px] h-[10px] lg:w-[15px] lg:h-[15px] border border-blue-500 flex justify-center items-center rounded ${
-          ids.includes(_id) ? "bg-indigo-500" : "bg-white"
+          ids.includes(_id) ? 'bg-indigo-500' : 'bg-white'
         }`}
       >
         <button
           className={`text-[7px] flex justify-center items-center ${
-            ids.includes(_id) ? "text-white" : "text-transparent"
+            ids.includes(_id) ? 'text-white' : 'text-transparent'
           }`}
         >
           <FaCheck />
         </button>
       </div>
       <Link
-        to={`/dashboard/all-counts/${_id}`}
+        to={`/dashboard/all-counts/${handler}`}
         className='text-xs hover:text-indigo-500 hover:font-semibold hidden md:block'
       >
-        {royalChapter}
+        {name}
       </Link>
       <Link
-        to={`/dashboard/all-counts/${_id}`}
+        to={`/dashboard/all-counts/${handler}`}
         className='text-[6px] hover:text-indigo-500 hover:font-semibold md:hidden'
       >
-        {royalChapter.length < 15
-          ? royalChapter
-          : royalChapter.substring(0, 15) + "."}
+        {name.length < 15 ? name : name.substring(0, 15) + '.'}
       </Link>
     </div>
   )

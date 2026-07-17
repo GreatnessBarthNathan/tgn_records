@@ -1,134 +1,127 @@
-import { useState, useContext, createContext, useEffect } from "react"
-import customFetch from "../../utils/customFetch"
-import { useParams } from "react-router-dom"
-import { CountsContainer, FormRow, FormSelect } from "../../components"
-// import { meetingType } from "../../utils/constants"
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
-import { Loading } from "../../components"
+import { useState, useContext, createContext, useEffect } from 'react'
+import customFetch from '../../utils/customFetch'
+import { useParams } from 'react-router-dom'
+import { CountsContainer, FormRow, FormSelect } from '../../components'
+import { Loading } from '../../components'
+import Pagination from '../../components/Pagination'
+import { toast } from 'react-toastify'
+import { MEETING_TYPE } from '../../utils/constants'
+import dayjs from 'dayjs'
 
 const AllCountsContext = createContext()
 
 const AllCounts = () => {
   const [loading, setLoading] = useState(false)
-  const [accOwner, setAccOwner] = useState({})
-  const [page, setPage] = useState(0)
-  const [counts, setCounts] = useState([])
-  const [paginatedArray, setPaginatedArray] = useState([])
-  const [allCounts, setAllCounts] = useState([])
+  const [page, setPage] = useState(1)
+  const [limit] = useState(10)
+  const [data, setData] = useState({
+    counts: [],
+    totalCounts: 0,
+    numOfPages: 0,
+  })
+  const [rc, setRC] = useState({})
   const { id } = useParams()
-  const [meetingType, setMeetingType] = useState([])
+  const [meetingType] = useState(MEETING_TYPE)
+  const [meeting, setMeeting] = useState('ALL')
+  const [queryDate, setQueryDate] = useState({
+    from: dayjs('2022-01-01').format('YYYY-MM-DD'),
+    to: dayjs(new Date(Date.now())).format('YYYY-MM-DD'),
+  })
 
   // fetch counts
   const fetchCounts = async () => {
+    setLoading(true)
     try {
       const {
-        data: { counts },
-      } = await customFetch.get(`/count/all-counts/${id}`)
-      setCounts(counts)
-      console.log(counts)
+        data: { counts, totalCounts, numOfPages },
+      } = await customFetch.get(
+        `/count/all-counts/${id}?page=${page}&limit=${limit}&meetingType=${meeting}&from=${queryDate.from}&to=${queryDate.to}`,
+      )
+      setData({
+        counts: counts,
+        totalCounts: totalCounts,
+        numOfPages: numOfPages,
+      })
+
+      setLoading(false)
       return counts
     } catch (error) {
+      setLoading(false)
       return error
     }
   }
 
-  // pagination
-  const paginate = (countsArray) => {
-    const itemsPerPage = 20
-    const pages = Math.ceil(countsArray.length / itemsPerPage)
-    const newArray = Array.from({ length: pages }, (_, index) => {
-      const start = index * itemsPerPage
-      const pagination = countsArray.slice(start, start + itemsPerPage)
-      return pagination
-    })
-    return newArray
-  }
-
-  // getCounts
-  const getCounts = async () => {
-    setLoading(true)
+  const getRC = async () => {
     const {
       data: { user },
     } = await customFetch.get(`/user/${id}`)
-    setAccOwner(user)
+    if (!user) toast.error('user not found')
 
-    const counts = await fetchCounts()
-    const pagination = paginate(counts)
+    const {
+      data: { rc },
+    } = await customFetch.get(`/rc/${user.rc}`)
 
-    setPaginatedArray(pagination)
-    setAllCounts(pagination[page])
-    setLoading(false)
+    setRC(rc)
+    return rc
   }
 
   // handle submit
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-    setPage(0)
+    setPage(1)
     const formData = new FormData(e.currentTarget)
     const { meetingType, from, to } = Object.fromEntries(formData)
-    const url = `/count/all-counts/${accOwner._id}?meetingType=${meetingType}&from=${from}&to=${to}`
+
+    const {
+      data: { user },
+    } = await customFetch.get(`/user/${id}`)
+    if (!user) toast.error('user not found')
+
+    const url = `/count/all-counts/${user._id}?meetingType=${meetingType}&from=${from}&to=${to}&page=${page}&limit=${limit}`
+
     try {
       const {
-        data: { counts },
+        data: { counts, totalCounts, numOfPages },
       } = await customFetch.get(url)
 
-      // pagination
-      const pagination = paginate(counts)
-
-      setPaginatedArray(pagination)
-      setAllCounts(pagination[0])
-      setCounts(counts)
+      setData({
+        counts: counts,
+        totalCounts: totalCounts,
+        numOfPages: numOfPages,
+      })
       setLoading(false)
     } catch (error) {
       console.log(error)
       setLoading(false)
     }
   }
-  // next page
-  const nextPage = () => {
-    if (page === paginatedArray.length - 1) {
-      setPage(paginatedArray.length - 1)
-      setAllCounts(paginatedArray[paginatedArray.length - 1])
-    } else {
-      setPage(page + 1)
-      setAllCounts(paginatedArray[page + 1])
-    }
-  }
 
-  // previous page
-  const previousPage = () => {
-    if (page === 0) {
-      setPage(0)
-      setAllCounts(paginatedArray[0])
-    } else {
-      setAllCounts(paginatedArray[page - 1])
-      setPage(page - 1)
-    }
-  }
+  // const createMeetingType = async () => {
+  //   const counts = await fetchCounts()
 
-  const createMeetingType = async () => {
-    const counts = await fetchCounts()
-    console.log(counts)
-    const meetingType = [
-      "ALL",
-      ...new Set(counts.map((count) => count.meetingType)),
-    ]
-    setMeetingType(meetingType)
-  }
+  //   const meetingType = [
+  //     'ALL',
+  //     ...new Set(counts.map((count) => count.meetingType)),
+  //   ]
+  //   setMeetingType(meetingType)
+  // }
 
   const values = {
-    allCounts,
-    accOwner,
+    rc,
     page,
-    paginatedArray,
-    counts,
+    data,
   }
 
   useEffect(() => {
-    getCounts()
-    createMeetingType()
+    getRC()
+    // createMeetingType()
   }, [])
+
+  useEffect(() => {
+    fetchCounts()
+  }, [page])
+
   return (
     <AllCountsContext.Provider value={values}>
       {/* wrapper */}
@@ -146,9 +139,24 @@ const AllCounts = () => {
               defaultValue={Object.values(meetingType).ALL}
               list={Object.values(meetingType)}
               labelText='Meeting Type'
+              onChange={(e) => setMeeting(e.target.value)}
             />
-            <FormRow type='date' name='from' labelText='from' />
-            <FormRow type='date' name='to' labelText='to' />
+            <FormRow
+              type='date'
+              name='from'
+              labelText='from'
+              onChange={(e) =>
+                setQueryDate({ ...queryDate, from: e.target.value })
+              }
+            />
+            <FormRow
+              type='date'
+              name='to'
+              labelText='to'
+              onChange={(e) =>
+                setQueryDate({ ...queryDate, to: e.target.value })
+              }
+            />
             <button
               type='submit'
               className='text-white bg-indigo-500 rounded cursor-pointer hover:bg-blue-300 ease-in-out duration-300 mt-7 p-[10px]'
@@ -158,48 +166,19 @@ const AllCounts = () => {
           </form>
         </div>
 
-        {loading ? (
-          <Loading />
-        ) : (
-          <>
-            {/* counts */}
-            <CountsContainer />
-            {/* PAGINATION */}
-            {paginatedArray.length > 1 && (
-              <div className='mt-5 flex justify-between items-center text-xs md:text-sm lg:text-base'>
-                <div className='flex items-center space-x-3'>
-                  <button
-                    className={`${
-                      page === 0
-                        ? "bg-[whitesmoke] text-black border-2 border-slate-200"
-                        : "bg-indigo-500"
-                    } px-3 py-2 rounded text-white`}
-                    onClick={previousPage}
-                  >
-                    <FaAngleLeft />
-                  </button>
-                  <span className='text-indigo-500'>Previous</span>
-                </div>
-                <p className='text-[8px] md:text-xs lg:text-base'>
-                  Page {page + 1} of {paginatedArray.length}
-                </p>
-                <div className='flex items-center justify-center space-x-3'>
-                  <span className='text-indigo-500'>Next</span>
-                  <button
-                    className={`${
-                      page === paginatedArray.length - 1
-                        ? "bg-[whitesmoke] text-black border-2 border-slate-200"
-                        : "bg-indigo-500"
-                    } px-3 py-2 rounded text-white`}
-                    onClick={nextPage}
-                  >
-                    <FaAngleRight />
-                  </button>
-                </div>
-              </div>
-            )}
-          </>
-        )}
+        <>
+          {loading ? (
+            <Loading />
+          ) : (
+            <div>
+              {/* counts */}
+              <CountsContainer />
+              {data && data.numOfPages > 1 && (
+                <Pagination page={page} data={data} setPage={setPage} />
+              )}
+            </div>
+          )}
+        </>
       </div>
     </AllCountsContext.Provider>
   )
